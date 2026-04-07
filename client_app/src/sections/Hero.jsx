@@ -37,8 +37,9 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex flex-col justify-center px-6 relative overflow-hidden pt-32 pb-20">
       
       {/* Background gradients like reference */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#a78bfa]/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#4ade80]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent4/30 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-100px] left-[-100px] w-[600px] h-[600px] bg-accent2/20 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-[40%] left-[50%] translate-x-[-50%] w-[800px] h-[400px] bg-accent3/10 rounded-full blur-[200px] pointer-events-none" />
 
       <div className="container mx-auto max-w-[1400px] z-10">
         
@@ -76,7 +77,7 @@ const Hero = () => {
             className="self-end md:mr-12 lg:mr-24"
           >
             <h1 className="text-[12vw] sm:text-[10vw] md:text-[9vw] font-black leading-[0.85] tracking-[-0.04em] whitespace-nowrap">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/40">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent2 via-accent3 to-accent1 drop-shadow-[0_0_15px_rgba(255,0,85,0.3)]">
                 WEB DEVELOPER
               </span>
             </h1>
@@ -107,7 +108,7 @@ const Hero = () => {
             <MagneticButton>
               <a 
                 href="#projects" 
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-foreground text-background flex items-center justify-center font-bold text-lg hover:scale-110 transition-transform duration-300"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-accent1 text-black shadow-[0_0_30px_rgba(204,255,0,0.4)] flex items-center justify-center font-bold text-lg hover:scale-110 transition-transform duration-300"
               >
                 Let's Talk
               </a>

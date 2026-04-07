@@ -36,8 +36,8 @@ const Projects = () => {
         
         {/* Header Block matching thegr8binil */}
         <div className="flex items-center gap-4 mb-24">
-          <div className="w-12 h-[1px] bg-foreground/30"></div>
-          <h2 className="text-xl md:text-2xl font-medium tracking-tight text-foreground/80 uppercase">
+          <div className="w-12 h-[1px] bg-accent4/50"></div>
+          <h2 className="text-xl md:text-2xl font-black tracking-tight text-accent4 drop-shadow-[0_0_8px_rgba(112,0,255,0.5)] uppercase">
              Selected Works
           </h2>
         </div>
@@ -58,25 +58,25 @@ const Projects = () => {
                 className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center group`}
               >
                 {/* Visual Side (Mockup image) */}
-                <div className="w-full lg:w-1/2 relative overflow-hidden rounded-3xl aspect-[4/3] bg-white/5 border border-white/10">
-                   <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-all duration-700 z-10" />
+                <div className="w-full lg:w-1/2 relative overflow-hidden rounded-3xl aspect-[4/3] bg-white/5 border border-white/10 group-hover:border-accent1/50 transition-colors duration-500">
+                   <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all duration-700 z-10" />
                    <img 
                       src={getThumbnail(index)} 
                       alt={project.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                      className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                    />
                 </div>
 
                 {/* Content Side */}
                 <div className="w-full lg:w-1/2 space-y-6 flex flex-col justify-center">
                   
-                  <div className="flex gap-4 items-center bg-white/5 px-4 py-2 rounded-full w-fit mb-2">
-                     <span className="text-xs font-bold text-accent1 uppercase tracking-widest">{index < 9 ? `0${index + 1}` : index + 1}</span>
-                     <div className="w-1 h-1 rounded-full bg-foreground/30" />
-                     <span className="text-xs font-bold text-muted uppercase tracking-widest">2026</span>
+                  <div className="flex gap-4 items-center bg-white/5 px-4 py-2 rounded-full w-fit mb-2 border border-white/5">
+                     <span className="text-xs font-black text-accent1 drop-shadow-[0_0_5px_rgba(204,255,0,0.5)] uppercase tracking-widest">{index < 9 ? `0${index + 1}` : index + 1}</span>
+                     <div className="w-1 h-1 rounded-full bg-white/30" />
+                     <span className="text-xs font-bold text-white/50 uppercase tracking-widest">2026</span>
                   </div>
 
-                  <h3 className="text-4xl md:text-6xl font-black tracking-tight leading-none group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/50 transition-all duration-500 cursor-default">
+                  <h3 className="text-4xl md:text-6xl font-black tracking-tight leading-none group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-accent1 group-hover:to-accent2 transition-all duration-500 cursor-default">
                     {project.title}
                   </h3>
                   
@@ -86,7 +86,7 @@ const Projects = () => {
 
                   <div className="flex flex-wrap gap-2 pt-4">
                     {project.technologies?.map((tech, tIdx) => (
-                      <span key={tIdx} className="text-xs font-medium px-4 py-2 rounded-full border border-white/20 text-foreground/80 hover:bg-white hover:text-black transition-colors cursor-default">
+                      <span key={tIdx} className="text-xs font-bold px-4 py-2 rounded-full border border-white/20 text-white/80 hover:bg-accent3 hover:text-white hover:border-accent3 hover:shadow-[0_0_10px_rgba(255,0,85,0.4)] transition-all cursor-default">
                         {tech}
                       </span>
                     ))}
@@ -98,7 +98,7 @@ const Projects = () => {
                         href={project.liveDemoLink} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background font-bold rounded-full hover:scale-105 transition-transform"
+                        className="flex items-center justify-center gap-2 px-8 py-4 bg-accent2 text-black font-black rounded-full hover:scale-105 shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-transform"
                       >
                         Live Demo
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -109,7 +109,7 @@ const Projects = () => {
                         href={project.githubLink}
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="flex items-center justify-center px-8 py-4 border border-white/20 rounded-full font-bold text-foreground hover:bg-white/5 transition-colors"
+                        className="flex items-center justify-center px-8 py-4 border-2 border-white/20 rounded-full font-bold text-white hover:border-accent1 hover:text-accent1 hover:shadow-[0_0_15px_rgba(204,255,0,0.2)] transition-all"
                       >
                         Source Code
                       </a>

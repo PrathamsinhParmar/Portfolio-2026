@@ -7,11 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0a0a0a',
+        background: '#000000',
         foreground: '#f5f5f5',
         muted: '#a1a1aa',
-        accent1: '#4ade80', // Green accent
-        accent2: '#a78bfa', // Purple accent
+        accent1: '#ccff00', // Neon Yellow
+        accent2: '#00f0ff', // Electric Cyan
+        accent3: '#ff0055', // Hot Pink
+        accent4: '#7000ff', // Vivid Purple
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

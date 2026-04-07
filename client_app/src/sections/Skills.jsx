@@ -23,7 +23,7 @@ const Skills = () => {
   const duplicatedLogos = [...techLogos, ...techLogos];
 
   return (
-    <section id="skills" className="py-32 border-t border-white/10 relative overflow-hidden bg-[#0a0a0a]">
+    <section id="skills" className="py-32 border-t border-white/10 relative overflow-hidden bg-black">
       <div className="container mx-auto px-6 max-w-[1200px] flex flex-col items-center text-center">
         
         {/* Load More Button */}
@@ -33,7 +33,7 @@ const Skills = () => {
           viewport={{ once: true, margin: "-50px" }}
           className="mb-12"
         >
-          <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 hover:border-white/30 transition-colors bg-white/5 text-sm font-medium">
+          <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 hover:border-accent2 hover:text-accent2 hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all bg-white/5 text-sm font-bold">
             Load More 
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </button>
@@ -45,7 +45,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.1 }}
-          className="text-[#a78bfa] tracking-widest uppercase font-bold text-sm mb-6"
+          className="bg-accent4 text-white px-6 py-2 rounded-full tracking-widest uppercase font-black text-sm mb-8 drop-shadow-[0_0_10px_rgba(112,0,255,0.6)]"
         >
           MY TECH STACK
         </motion.h3>
@@ -56,17 +56,17 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.2 }}
-          className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed max-w-4xl text-foreground mb-24"
+          className="text-2xl md:text-3xl lg:text-4xl font-black leading-relaxed max-w-4xl text-white/90 mb-24"
         >
-          My expertise spans a diverse range of <span className="text-[#d97706]">technologies</span>, enabling me to deliver comprehensive and <span className="text-[#0d9488]">cutting-edge solutions</span> across various platforms.
+          My expertise spans a diverse range of <span className="text-accent1 drop-shadow-[0_0_10px_rgba(204,255,0,0.4)]">technologies</span>, enabling me to deliver comprehensive and <span className="text-accent2 drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">cutting-edge solutions</span> across various platforms.
         </motion.p>
       </div>
 
       {/* Infinite Marquee Logos */}
       <div className="relative w-full overflow-hidden flex flex-col">
         {/* Shadow overlays for smooth fading edges */}
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-10"></div>
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-10"></div>
+        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10"></div>
+        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10"></div>
 
         <motion.div 
           className="flex whitespace-nowrap min-w-max items-center py-4"

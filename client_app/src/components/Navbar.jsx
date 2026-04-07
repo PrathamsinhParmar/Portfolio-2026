@@ -38,7 +38,7 @@ const Navbar = () => {
               <a 
                 key={link.name} 
                 href={link.href} 
-                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-white/10 transition-all"
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-accent2 hover:bg-accent2/10 transition-all"
               >
                 {link.icon}
                 {link.name}
@@ -50,7 +50,7 @@ const Navbar = () => {
           <div className="flex-1 flex justify-end">
              <a 
               href="#contact" 
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${scrolled ? 'bg-white text-black hover:scale-105' : 'glass text-foreground hover:bg-white/10'}`}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${scrolled ? 'bg-accent1 text-black hover:scale-105 shadow-[0_0_15px_rgba(204,255,0,0.5)]' : 'glass text-foreground hover:bg-accent1 hover:text-black hover:shadow-[0_0_15px_rgba(204,255,0,0.5)]'}`}
              >
                Contact Me
              </a>
@@ -81,7 +81,7 @@ const Navbar = () => {
                   key={link.name} 
                   href={link.href} 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 text-lg font-medium text-foreground/80 hover:text-foreground hover:bg-white/5 p-3 rounded-xl transition-all"
+                  className="flex items-center gap-3 text-lg font-medium text-foreground/80 hover:text-accent2 hover:bg-accent2/10 p-3 rounded-xl transition-all"
                 >
                   {link.icon}
                   {link.name}
@@ -91,7 +91,7 @@ const Navbar = () => {
                 <a 
                   href="#contact" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-4 bg-foreground text-background rounded-xl font-bold"
+                  className="flex items-center justify-center gap-2 w-full py-4 bg-accent1 text-black rounded-xl font-bold shadow-[0_0_15px_rgba(204,255,0,0.3)] transition-all hover:scale-[1.02]"
                 >
                   <Mail size={18} /> Let's Connect
                 </a>
