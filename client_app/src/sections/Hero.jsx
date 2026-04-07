@@ -52,7 +52,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Massive Text Layout aligned exactly like reference */}
-        <div className="flex flex-col mb-16">
+        <div className="flex flex-col mb-18">
           
           <motion.div
             initial={{ opacity: 0, x: -100 }}
@@ -61,7 +61,7 @@ const Hero = () => {
             className="self-start"
           >
             <h1 className="text-[12vw] sm:text-[10vw] md:text-[9vw] font-black leading-[0.85] tracking-[-0.04em] whitespace-nowrap">
-              FULL STACK
+               FULL STACK
             </h1>
           </motion.div>
           
@@ -81,13 +81,13 @@ const Hero = () => {
         </div>
 
         {/* Bottom Metadata & Button */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-12 mt-12 md:mt-24">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mt-4 md:mt-8">
           
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="max-w-2xl mt-12 mb-8 md:mt-24"
+            className="max-w-2xl mt-4 mb-4 md:mt-8"
           >
             <p className="text-2xl md:text-3xl text-white/50 leading-[1.1] font-black tracking-tighter uppercase">
               ENGINEERING HIGH-PERFORMANCE <span className="text-white">FULL-STACK</span> APPLICATIONS. FOCUSED ON SCALABLE ARCHITECTURES AND <span className="text-accent2">HIGH-IMPACT</span> DIGITAL EXPERIENCES.
@@ -103,16 +103,16 @@ const Hero = () => {
             <MagneticButton>
               <a 
                 href="#contact" 
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center overflow-hidden hover:scale-105 transition-all duration-300 group relative"
+                className="w-48 h-48 md:w-64 md:h-64 rounded-full flex items-center justify-center overflow-hidden hover:scale-110 transition-all duration-500 group relative shadow-[0_0_50px_rgba(0,0,0,0.5)] border-4 border-white/10"
               >
                 {/* Gradient Glow Background */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-accent2 via-accent3 to-accent1 blur-2xl opacity-40 group-hover:opacity-70 group-hover:scale-110 transition-all duration-500 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent2 via-accent3 to-accent1 blur-3xl opacity-50 group-hover:opacity-80 group-hover:scale-125 transition-all duration-700 animate-pulse" />
                 
                 {/* Main Photo */}
                 <img 
                   src="/Pratham Latest Photo.jpeg" 
                   alt="Contact" 
-                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 relative z-10" 
+                  className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110 relative z-10" 
                 />
               </a>
             </MagneticButton>

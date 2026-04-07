@@ -30,9 +30,9 @@ const Contact = () => {
     <section id="contact" className="py-32 px-6 bg-transparent text-white relative">
       <div className="container mx-auto max-w-[1400px]">
         
-        <div className="flex items-center gap-4 mb-24">
-          <div className="w-12 h-[1px] bg-white/30"></div>
-          <h2 className="text-xl md:text-2xl font-black tracking-tight uppercase text-white">
+        <div className="flex items-center gap-6 mb-24">
+          <div className="w-16 h-[2px] bg-gradient-to-r from-accent1 to-transparent animate-pulse shadow-[0_0_15px_rgba(204,255,0,0.8)]"></div>
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-white via-white/90 to-accent1/80 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(204,255,0,0.4)]">
              Say Hello
           </h2>
         </div>

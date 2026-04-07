@@ -27,9 +27,9 @@ const Experience = () => {
     <section id="experience" className="py-32 px-6 border-t border-white/10 relative overflow-hidden">
       <div className="container mx-auto max-w-[1400px]">
         
-        <div className="flex items-center gap-4 mb-24">
-          <div className="w-12 h-[1px] bg-accent3/50"></div>
-          <h2 className="text-xl md:text-2xl font-black tracking-tight text-accent3 drop-shadow-[0_0_8px_rgba(255,0,85,0.5)] uppercase">
+        <div className="flex items-center gap-6 mb-24">
+          <div className="w-16 h-[2px] bg-gradient-to-r from-accent3 to-transparent animate-pulse shadow-[0_0_15px_rgba(255,0,85,0.8)]"></div>
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-white via-white/90 to-accent3/80 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,0,85,0.4)]">
              Work Experience
           </h2>
         </div>

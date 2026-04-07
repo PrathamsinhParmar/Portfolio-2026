@@ -72,9 +72,9 @@ const Projects = () => {
       <div className="container mx-auto max-w-[1400px]">
         
         {/* Header Block matching thegr8binil */}
-        <div className="flex items-center gap-4 mb-24">
-          <div className="w-12 h-[1px] bg-accent4/50"></div>
-          <h2 className="text-xl md:text-2xl font-black tracking-tight text-accent4 drop-shadow-[0_0_8px_rgba(112,0,255,0.5)] uppercase">
+        <div className="flex items-center gap-6 mb-24">
+          <div className="w-16 h-[2px] bg-gradient-to-r from-accent4 to-transparent animate-pulse shadow-[0_0_15px_rgba(112,0,255,0.8)]"></div>
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-white via-white/90 to-accent4/80 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(112,0,255,0.4)]">
              Selected Works
           </h2>
         </div>

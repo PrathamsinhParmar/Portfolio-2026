@@ -1,5 +1,68 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { 
+  MapPin, 
+  Briefcase, 
+  Music, 
+  Keyboard, 
+  Plus, 
+  ArrowUpRight, 
+  Layers,
+  ChevronRight,
+  ExternalLink,
+  Zap
+} from 'lucide-react';
+
+const GithubSVG = ({ size = 20, className = "" }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+  </svg>
+);
+
+// Cleanly extracted component to fix React Hook errors
+const ProjectDiscoverCard = () => {
+    const [isHovered, setIsHovered] = React.useState(false);
+    return (
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(255,255,255,0.4)' }}
+            className="md:col-span-2 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#0f0f0f] border border-white/10 p-6 flex items-center justify-between group cursor-pointer transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+        >
+            <div className="flex flex-col relative z-20 w-[200px]">
+                <h3 className="text-2xl font-black leading-none mb-1.5 bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">Explore Projects</h3>
+                
+                {/* Ultra-thin Dynamic Progress Bar - State Driven */}
+                <div className="relative w-full h-[2px] bg-white/5 rounded-full overflow-hidden mb-2">
+                    <motion.div 
+                        initial={{ width: "10%" }}
+                        animate={{ width: isHovered ? "100%" : "10%" }}
+                        transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+                        className="h-full bg-accent2 shadow-[0_0_10px_rgba(0,240,255,0.8)]"
+                    />
+                </div>
+
+                <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.3em]">View full Projects</p>
+            </div>
+            <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black group-hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-700 z-10">
+                <ChevronRight size={22} className="group-hover:translate-x-1 transition-transform" />
+            </div>
+            
+            {/* Background Accent Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+        </motion.div>
+    );
+};
 
 const Skills = () => {
   // Ordered array of devicon SVG URLs matching the user's stack
@@ -11,120 +74,306 @@ const Skills = () => {
     { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6' },
     { name: 'React', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB' },
     { name: 'Next.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#FFFFFF' },
-    { name: 'Redux', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg', color: '#764ABC' },
     { name: 'Node.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933' },
-    { name: 'Express', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', color: '#FFFFFF' },
     { name: 'MongoDB', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248' },
-    { name: 'PostgreSQL', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#4169E1' },
-    { name: 'Git', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', color: '#F05032' },
-    { name: 'GitHub', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', color: '#FFFFFF' },
-    { name: 'Docker', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED' },
-    { name: 'AWS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', color: '#FF9900' },
     { name: 'Python', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB' },
-    { name: 'C++', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg', color: '#00599C' },
-    { name: 'Java', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', color: '#007396' },
-    { name: 'Postman', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg', color: '#FF6C37' },
     { name: 'Figma', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', color: '#F24E1E' }
   ];
 
-  // We duplicate the array to create a seamless infinite marquee effect
   const duplicatedLogos = [...techLogos, ...techLogos];
 
-  return (
-    <section id="skills" className="py-32 border-t border-white/10 relative overflow-hidden bg-black">
-      <div className="container mx-auto px-6 max-w-[1200px] flex flex-col items-center text-center">
+  // Mock GitHub contribution data (7 rows x ~30 columns)
+  const [githubData, setGithubData] = React.useState(null);
+  const [totalContributions, setTotalContributions] = React.useState(0);
+  const [isLoadingGithub, setIsLoadingGithub] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchGithubData = async () => {
+      try {
+        const username = 'PrathamsinhParmar'; // Your official GitHub username
+        const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json`);
+        const data = await response.json();
         
-        {/* Load More Button */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="mb-12"
-        >
-          <button className="relative overflow-hidden flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 bg-white/5 text-sm font-black text-white hover:text-black hover:border-transparent transition-all group shadow-2xl">
-            {/* ARC Background Fill */}
-            <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent2 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[40%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
-            
-            <span className="relative z-10 flex items-center gap-2">
-              Load More 
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-            </span>
-          </button>
-        </motion.div>
+        // Flatten the multi-dimensional contributions array and get the last 294 squares (42 weeks * 7 days)
+        const flatContributions = data.contributions.flat().slice(-294);
+        
+        setGithubData(flatContributions);
+        setTotalContributions(data.totalContributions || 0);
+        setIsLoadingGithub(false);
+      } catch (error) {
+        console.error('Error fetching github data:', error);
+        // Fallback to mock data on error
+        setGithubData(Array.from({ length: 294 }, () => Math.floor(Math.random() * 4)));
+        setIsLoadingGithub(false);
+      }
+    };
+    fetchGithubData();
+  }, []);
 
-        {/* Section Label Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ 
-            delay: 0.1,
-            duration: 4, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-          className="mb-8"
-        >
-          <h3 className="inline-flex items-center gap-3 glass px-8 py-3 rounded-full border border-accent4/30 text-white font-black text-xs tracking-[0.25em] uppercase shadow-[0_0_20px_rgba(112,0,255,0.15)] group hover:border-accent4 transition-colors duration-500">
-            <span className="w-2 h-2 rounded-full bg-accent4 animate-pulse shadow-[0_0_10px_rgba(112,0,255,0.8)]" />
-            MY TECH STACK
-            <span className="text-accent4 group-hover:rotate-12 transition-transform duration-500">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
-            </span>
-          </h3>
-        </motion.div>
+  return (
+    <section id="skills" className="py-24 px-6 relative overflow-hidden bg-transparent">
+      {/* SECTION GLOWS - Matching index aesthetic */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent4/10 rounded-full blur-[140px] pointer-events-none opacity-50"></div>
+      
+      <div className="container mx-auto max-w-[1200px] relative z-10">
+        <div className="flex items-center gap-6 mb-16">
+          <div className="w-16 h-[2px] bg-gradient-to-r from-accent4 to-transparent animate-pulse shadow-[0_0_15px_rgba(112,0,255,0.8)]"></div>
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-white via-white/90 to-accent4/80 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(112,0,255,0.4)]">
+             Expertise & History
+          </h2>
+        </div>
 
-        {/* Highlighted Master Text */}
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ delay: 0.2 }}
-          className="text-2xl md:text-3xl lg:text-4xl font-black leading-relaxed max-w-4xl text-white/90 mb-24"
-        >
-          My expertise spans a diverse range of <span className="text-accent1 drop-shadow-[0_0_10px_rgba(204,255,0,0.4)]">technologies</span>, enabling me to deliver comprehensive and <span className="text-accent2 drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">cutting-edge solutions</span> across various platforms.
-        </motion.p>
-      </div>
-
-      {/* Infinite Marquee Logos */}
-      <div className="relative w-full overflow-hidden flex flex-col">
-        {/* Shadow overlays for smooth fading edges */}
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10"></div>
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10"></div>
-
-        <motion.div 
-          className="flex items-center gap-16 md:gap-20 py-12"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            duration: 8,
-            ease: "linear",
-            repeat: Infinity,
-            repeatType: 'loop'
-          }}
-        >
-          {duplicatedLogos.map((logo, index) => (
-            <div key={index} className="flex-shrink-0 relative group hover:scale-110 transition-all duration-500 cursor-default flex flex-col items-center justify-center">
-              <img 
-                src={logo.src} 
-                alt={`${logo.name} logo`} 
-                className="h-16 w-16 md:h-20 md:w-20 object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all" 
-                style={{ filter: `drop-shadow(0 0 10px ${logo.color}33)` }}
-              />
-              {/* Dynamic Brand-Matched Label */}
-              <span 
-                className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-all duration-500 text-[10px] md:text-sm font-black tracking-[0.25em] uppercase whitespace-nowrap translate-y-4 group-hover:translate-y-0"
-                style={{ 
-                   color: logo.color,
-                   textShadow: `0 0 15px ${logo.color}88` 
-                }}
-              >
-                {logo.name}
-              </span>
+        {/* Bento Grid Layout - Reduced row height to 110px */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:auto-rows-[110px]">
+          
+          {/* Location Card - Neon Yellow Theme */}
+          <motion.div 
+            whileHover={{ y: -5, borderColor: 'rgba(204, 255, 0, 0.6)' }}
+            className="md:col-span-1 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#0a0a00] border border-accent1/20 group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(204,255,0,0.15),transparent_70%)]"></div>
+            {/* Real Map Integration with enhanced visibility */}
+            <div className="absolute inset-0 grayscale opacity-40 brightness-110 contrast-125 group-hover:brightness-100 transition-all duration-700 mix-blend-screen">
+               <iframe 
+                width="100%" 
+                height="100%" 
+                frameBorder="0" 
+                scrolling="no" 
+                marginHeight="0" 
+                marginWidth="0" 
+                src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Vadodara,Gujarat&t=&z=12&ie=UTF8&iwloc=B&output=embed"
+                className="pointer-events-none"
+               ></iframe>
             </div>
-          ))}
-        </motion.div>
-      </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a00] via-transparent to-transparent"></div>
+            
+            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 glass rounded-full border border-white/20 z-20">
+              <MapPin size={12} className="text-accent1" />
+              <span className="text-[10px] font-bold text-white uppercase tracking-tight">Location</span>
+            </div>
+            
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 text-center w-full px-4">
+                <div className="relative mb-2 mx-auto w-4 h-4">
+                  <div className="absolute inset-0 bg-accent1 rounded-full animate-ping opacity-75"></div>
+                  <div className="relative w-full h-full bg-accent1 rounded-full border-2 border-black shadow-[0_0_15px_rgba(204,255,0,0.8)]"></div>
+                </div>
+                <h4 className="text-2xl font-black leading-none mb-0.5 uppercase tracking-tighter bg-gradient-to-r from-white to-accent1 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(204,255,0,0.4)]">Vadodara</h4>
+                <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Gujarat, India</p>
+            </div>
+          </motion.div>
 
+          {/* Featured Work Card - Hot Pink Theme */}
+          <motion.div 
+            whileHover={{ y: -5, borderColor: 'rgba(255, 0, 85, 0.6)' }}
+            className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#0a0005] border border-accent3/20 p-6 flex flex-col justify-between group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,0,85,0.15),transparent_70%)]"></div>
+            <div className="absolute top-0 right-0 w-48 h-48 bg-accent3/10 rounded-full blur-[60px] -translate-y-1/3 translate-x-1/3 group-hover:bg-accent3/20 transition-all duration-700"></div>
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 w-fit rounded-full border border-white/10 mb-4 shadow-xl">
+                <Briefcase size={12} className="text-accent3" />
+                <span className="text-[10px] font-bold text-white/60 uppercase tracking-tight">Featured work</span>
+              </div>
+              <h3 className="text-3xl font-black mb-2 tracking-tighter leading-none bg-gradient-to-r from-white to-accent3 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,0,85,0.4)]">Bookmarked</h3>
+              <p className="text-sm text-white/50 leading-relaxed max-w-[480px] font-medium italic">Effortlessly save and organize your favorite tweets in Notion using a Telegram bot.</p>
+            </div>
+            
+            <div className="mt-2 relative h-[160px] overflow-hidden z-10 [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
+                <motion.div 
+                    animate={{ y: ["0%", "-50%"] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="flex flex-col gap-2 pt-2"
+                >
+                    {[
+                        { title: 'Bookmarked', text: 'Tweet saved to Notion', time: 'Just now', icon: <ArrowUpRight size={16} /> },
+                        { title: 'Syncing', text: 'Updating database...', time: '2m ago', icon: <Layers size={16} /> },
+                        { title: 'Telegram', text: 'Bot active', time: '5m ago', icon: <Zap size={16} /> },
+                        { title: 'Notion', text: 'API connected', time: '10m ago', icon: <Briefcase size={16} /> },
+                        // Duplicate for seamless loop
+                        { title: 'Bookmarked', text: 'Tweet saved to Notion', time: 'Just now', icon: <ArrowUpRight size={16} /> },
+                        { title: 'Syncing', text: 'Updating database...', time: '2m ago', icon: <Layers size={16} /> },
+                        { title: 'Telegram', text: 'Bot active', time: '5m ago', icon: <Zap size={16} /> },
+                        { title: 'Notion', text: 'API connected', time: '10m ago', icon: <Briefcase size={16} /> }
+                    ].map((notif, idx) => (
+                        <div key={idx} className="glass-card px-3 py-2.5 border border-white/10 bg-white/[0.03] rounded-xl flex items-center gap-3 h-12 flex-shrink-0">
+                            <div className="w-8 h-8 rounded-lg bg-accent3/20 flex items-center justify-center text-accent3 shadow-[0_0_15px_rgba(255,0,85,0.2)] flex-shrink-0">
+                                {notif.icon}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="flex justify-between items-center mb-0.5">
+                                    <span className="text-[10px] font-black text-white uppercase tracking-tight">{notif.title}</span>
+                                    <span className="text-[8px] text-white/30 font-bold uppercase">{notif.time}</span>
+                                </div>
+                                <p className="text-[10px] text-white/40 font-medium truncate">{notif.text}</p>
+                            </div>
+                        </div>
+                    ))}
+                </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Spotify Card - Vivid Purple Theme */}
+          <motion.div 
+            whileHover={{ y: -5, borderColor: 'rgba(112, 0, 255, 0.6)' }}
+            className="md:col-span-1 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#04000a] border border-accent4/20 p-5 flex items-center gap-3.5 group transition-all duration-500 shadow-[15px_15px_40px_rgba(0,0,0,0.5)]"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(112,0,255,0.2),transparent_70%)]"></div>
+            <div className="w-12 h-12 rounded-xl overflow-hidden bg-white/5 flex-shrink-0 relative shadow-[0_0_15px_rgba(112,0,255,0.4)] z-10">
+               <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Song art" />
+            </div>
+            <div className="flex-1 overflow-hidden relative z-10">
+                <div className="flex items-center gap-1 mb-0.5">
+                    <span className="text-[9px] font-bold text-accent4 uppercase tracking-[0.2em] flex items-center gap-1.5">
+                        <span className="w-1 h-1 rounded-full bg-accent4 animate-pulse shadow-[0_0_8px_#7000ff]"></span>
+                        Listening
+                    </span>
+                </div>
+                <h4 className="text-base font-black truncate leading-tight tracking-tight bg-gradient-to-r from-white to-accent4 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(112,0,255,0.4)]">Miniskirt</h4>
+                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest truncate">AOA</p>
+            </div>
+            <div className="absolute top-4 right-4 text-accent4/60 group-hover:text-accent4 group-hover:rotate-12 transition-all duration-500">
+                <Music size={16} />
+            </div>
+          </motion.div>
+
+          {/* Typing Speed Card - Electric Cyan Theme */}
+          <motion.div 
+            whileHover={{ y: -5, borderColor: 'rgba(0, 240, 255, 0.6)' }}
+            className="md:col-span-1 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#00060a] border border-accent2/20 p-6 flex flex-col justify-end group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(0,240,255,0.2),transparent_70%)]"></div>
+            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-full border border-white/20 z-10 shadow-lg">
+                <Keyboard size={12} className="text-accent2" />
+                <span className="text-[10px] font-bold text-white/60 uppercase tracking-tight">Metrics</span>
+            </div>
+            
+            <div className="relative z-10">
+                <div className="absolute -top-12 -right-2 text-[80px] font-black text-accent2/[0.06] select-none leading-none group-hover:text-accent2/[0.12] transition-colors duration-700">80</div>
+                <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-5xl font-black tracking-tighter bg-gradient-to-r from-white to-accent2 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,240,255,0.4)]">80</span>
+                    <span className="text-base font-black text-accent2 uppercase tracking-widest drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">wpm</span>
+                </div>
+                <div className="flex items-center gap-4 text-[10px] font-bold text-white/50 uppercase tracking-[0.2em]">
+                    <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent1 shadow-[0_0_15px_rgba(204,255,0,0.8)]"></span> 15s</span>
+                    <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent2 shadow-[0_0_15px_rgba(0,240,255,0.8)]"></span> 100%</span>
+                </div>
+            </div>
+          </motion.div>
+
+          {/* Social Icons Card */}
+          <div className="md:col-span-1 lg:row-span-1 grid grid-cols-3 gap-2.5">
+            {['X', 'Figma', 'Framer'].map((icon, idx) => (
+                <motion.div 
+                    key={idx}
+                    whileHover={{ y: -3, borderColor: idx === 0 ? 'rgba(255,255,255,0.6)' : idx === 1 ? 'rgba(255, 0, 85, 0.6)' : 'rgba(0, 240, 255, 0.6)' }}
+                    className="aspect-square rounded-xl bg-[#0c0c0c] border border-white/10 flex items-center justify-center group cursor-pointer transition-all duration-500 shadow-[0_8px_20px_rgba(0,0,0,0.5)]"
+                >
+                    {idx === 0 && <span className="text-xl font-black text-white group-hover:text-white transition-colors italic">X</span>}
+                    {idx === 1 && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-white/50 group-hover:text-accent3 transition-colors"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
+                    {idx === 2 && <Layers size={20} className="text-white/50 group-hover:text-accent2 transition-colors" />}
+                </motion.div>
+            ))}
+          </div>
+
+          {/* Discover Projects Card - White/Glow Theme */}
+          <ProjectDiscoverCard />
+
+          {/* Github Activity Card - Green Theme */}
+          <motion.div 
+            whileHover={{ y: -5, borderColor: 'rgba(38, 166, 65, 0.6)' }}
+            className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#000502] border border-accent1/20 p-6 flex flex-col justify-between group cursor-pointer transition-all duration-500 shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(38,166,65,0.2),transparent_70%)]"></div>
+            <div className="relative z-10">
+                <div className="flex justify-between items-center mb-6">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-full border border-white/20 shadow-lg">
+                        <GithubSVG size={12} className="text-accent1" />
+                        <span className="text-[10px] font-bold text-white/60 uppercase tracking-tight">Commit history</span>
+                    </div>
+                    <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.2em] bg-white/10 px-3 py-1 rounded-full border border-white/10">
+                        {isLoadingGithub ? '---' : totalContributions.toLocaleString()} Contributions
+                    </span>
+                </div>
+                
+                {/* Visual Github Graph Grid */}
+                <div className="flex gap-1 overflow-hidden justify-center mask-fade-right min-h-[85px]">
+                    {isLoadingGithub ? (
+                        <div className="flex items-center justify-center w-full h-full opacity-20">
+                            <div className="w-10 h-[1.5px] bg-accent1 animate-pulse"></div>
+                        </div>
+                    ) : (
+                        Array.from({ length: 42 }).map((_, colIdx) => (
+                            <div key={colIdx} className="flex flex-col gap-1">
+                                {Array.from({ length: 7 }).map((_, rowIdx) => {
+                                    const contribution = githubData[(colIdx * 7) + rowIdx];
+                                    const levelMap = { 'NONE': 0, 'FIRST_QUARTILE': 1, 'SECOND_QUARTILE': 2, 'THIRD_QUARTILE': 3, 'FOURTH_QUARTILE': 4 };
+                                    const level = levelMap[contribution?.contributionLevel] || 0;
+                                    const colors = ['#1a1a1a', '#0e4429', '#006d32', '#26a641', '#39d353'];
+                                    
+                                    return (
+                                        <div 
+                                            key={rowIdx} 
+                                            title={`${contribution?.date || ''}: ${contribution?.contributionCount || 0} contributions`}
+                                            className="w-2.5 h-2.5 rounded-[1.5px] transition-all duration-700 hover:z-10 group-hover:shadow-[0_0_10px_rgba(57,211,83,0.5)]"
+                                            style={{ backgroundColor: colors[level] }}
+                                        ></div>
+                                    );
+                                })}
+                            </div>
+                        ))
+                    )}
+                </div>
+            </div>
+            
+            <div className="flex justify-between items-center mt-6 relative z-10">
+                <p className="text-[9px] font-black text-white/30 uppercase tracking-[0.3em] flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-accent1 animate-pulse shadow-[0_0_8px_#ccff00]"></span>
+                    {isLoadingGithub ? 'Loading github sync...' : 'Synced with your live activity profile'}
+                </p>
+                <div className="w-10 h-[1.5px] bg-white/20 group-hover:bg-accent1 group-hover:w-16 transition-all duration-700 shadow-[0_0_12px_rgba(204,255,0,0.6)]"></div>
+            </div>
+          </motion.div>
+
+          {/* Tech Stack Card - Dynamic Glow Theme */}
+          <motion.div 
+            whileHover={{ y: -5, borderColor: 'rgba(112, 0, 240, 0.6)' }}
+            className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#04000a] border border-accent4/20 p-6 flex flex-col justify-between group transition-all duration-500 shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(112,0,255,0.2),transparent_70%)]"></div>
+            <div className="relative z-10">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 w-fit rounded-full border border-white/20 mb-6 shadow-lg">
+                    <Layers size={12} className="text-accent4" />
+                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-tight">Mastery</span>
+                </div>
+                
+                {/* Tech Marquee */}
+                <div className="relative w-full overflow-hidden mb-8 h-14 flex items-center">
+                    <motion.div 
+                        className="flex gap-10 items-center"
+                        animate={{ x: ["0%", "-50%"] }}
+                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    >
+                        {duplicatedLogos.map((logo, idx) => (
+                            <div key={idx} className="flex-shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700 transform drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                                <img src={logo.src} alt={logo.name} className="h-8 w-8 object-contain" />
+                            </div>
+                        ))}
+                    </motion.div>
+                </div>
+                
+                <h3 className="text-2xl font-black mb-1.5 tracking-tighter bg-gradient-to-r from-white to-accent4 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(112,0,255,0.4)]">Tech Spectrum</h3>
+                <p className="text-[10px] font-bold text-white/40 leading-tight max-w-[400px] uppercase tracking-widest italic pt-1 border-t border-white/5">
+                    mastering the stack with high performance.
+                </p>
+            </div>
+            
+            <div className="absolute top-1/2 left-1/2 -rotate-6 opacity-[0.04] pointer-events-none select-none group-hover:opacity-[0.08] transition-opacity duration-700">
+                 <div className="text-[110px] font-black text-white leading-none whitespace-nowrap">MASTERY</div>
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
     </section>
   );
 };
