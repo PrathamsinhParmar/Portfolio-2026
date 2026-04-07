@@ -52,7 +52,7 @@ const ProjectDiscoverCard = () => {
                     />
                 </div>
 
-                <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.3em]">View full Projects</p>
+                <p className="text-[12px] font-bold text-white/40 uppercase tracking-[0.3em]">View full Projects</p>
             </div>
             <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black group-hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-700 z-10">
                 <ChevronRight size={22} className="group-hover:translate-x-1 transition-transform" />
@@ -65,7 +65,6 @@ const ProjectDiscoverCard = () => {
 };
 
 const Skills = () => {
-  // Ordered array of devicon SVG URLs matching the user's stack
   const techLogos = [
     { name: 'HTML5', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', color: '#E34F26' },
     { name: 'CSS3', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', color: '#1572B6' },
@@ -82,7 +81,6 @@ const Skills = () => {
 
   const duplicatedLogos = [...techLogos, ...techLogos];
 
-  // Mock GitHub contribution data (7 rows x ~30 columns)
   const [githubData, setGithubData] = React.useState(null);
   const [totalContributions, setTotalContributions] = React.useState(0);
   const [isLoadingGithub, setIsLoadingGithub] = React.useState(true);
@@ -90,11 +88,10 @@ const Skills = () => {
   React.useEffect(() => {
     const fetchGithubData = async () => {
       try {
-        const username = 'PrathamsinhParmar'; // Your official GitHub username
+        const username = 'PrathamsinhParmar';
         const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json`);
         const data = await response.json();
         
-        // Flatten the multi-dimensional contributions array and get the last 294 squares (42 weeks * 7 days)
         const flatContributions = data.contributions.flat().slice(-294);
         
         setGithubData(flatContributions);
@@ -102,7 +99,6 @@ const Skills = () => {
         setIsLoadingGithub(false);
       } catch (error) {
         console.error('Error fetching github data:', error);
-        // Fallback to mock data on error
         setGithubData(Array.from({ length: 294 }, () => Math.floor(Math.random() * 4)));
         setIsLoadingGithub(false);
       }
@@ -112,7 +108,6 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-24 px-6 relative overflow-hidden bg-transparent">
-      {/* SECTION GLOWS - Matching index aesthetic */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent4/10 rounded-full blur-[140px] pointer-events-none opacity-50"></div>
       
       <div className="container mx-auto max-w-[1200px] relative z-10">
@@ -123,16 +118,13 @@ const Skills = () => {
           </h2>
         </div>
 
-        {/* Bento Grid Layout - Reduced row height to 110px */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:auto-rows-[110px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-auto md:grid-flow-row gap-4 max-w-[1200px] mx-auto">
           
-          {/* Location Card - Neon Yellow Theme */}
           <motion.div 
             whileHover={{ y: -5, borderColor: 'rgba(204, 255, 0, 0.6)' }}
-            className="md:col-span-1 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#0a0a00] border border-accent1/20 group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+            className="md:col-span-1 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#080800] border border-accent1/20 p-6 min-h-[180px] flex items-center justify-center group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(204,255,0,0.15),transparent_70%)]"></div>
-            {/* Real Map Integration with enhanced visibility */}
             <div className="absolute inset-0 grayscale opacity-40 brightness-110 contrast-125 group-hover:brightness-100 transition-all duration-700 mix-blend-screen">
                <iframe 
                 width="100%" 
@@ -149,7 +141,7 @@ const Skills = () => {
             
             <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 glass rounded-full border border-white/20 z-20">
               <MapPin size={12} className="text-accent1" />
-              <span className="text-[10px] font-bold text-white uppercase tracking-tight">Location</span>
+              <span className="text-[12px] font-bold text-white uppercase tracking-tight">Location</span>
             </div>
             
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 text-center w-full px-4">
@@ -158,11 +150,10 @@ const Skills = () => {
                   <div className="relative w-full h-full bg-accent1 rounded-full border-2 border-black shadow-[0_0_15px_rgba(204,255,0,0.8)]"></div>
                 </div>
                 <h4 className="text-2xl font-black leading-none mb-0.5 uppercase tracking-tighter bg-gradient-to-r from-white to-accent1 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(204,255,0,0.4)]">Vadodara</h4>
-                <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.3em]">Gujarat, India</p>
+                <p className="text-[12px] font-bold text-white/40 uppercase tracking-[0.3em]">Gujarat, India</p>
             </div>
           </motion.div>
 
-          {/* Featured Work Card - Hot Pink Theme */}
           <motion.div 
             whileHover={{ y: -5, borderColor: 'rgba(255, 0, 85, 0.6)' }}
             className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#0a0005] border border-accent3/20 p-6 flex flex-col justify-between group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
@@ -172,7 +163,7 @@ const Skills = () => {
             <div className="relative z-10">
               <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 w-fit rounded-full border border-white/10 mb-4 shadow-xl">
                 <Briefcase size={12} className="text-accent3" />
-                <span className="text-[10px] font-bold text-white/60 uppercase tracking-tight">Featured work</span>
+                <span className="text-[12px] font-bold text-white/60 uppercase tracking-tight">Featured work</span>
               </div>
               <h3 className="text-3xl font-black mb-2 tracking-tighter leading-none bg-gradient-to-r from-white to-accent3 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,0,85,0.4)]">Bookmarked</h3>
               <p className="text-sm text-white/50 leading-relaxed max-w-[480px] font-medium italic">Effortlessly save and organize your favorite tweets in Notion using a Telegram bot.</p>
@@ -189,7 +180,6 @@ const Skills = () => {
                         { title: 'Syncing', text: 'Updating database...', time: '2m ago', icon: <Layers size={16} /> },
                         { title: 'Telegram', text: 'Bot active', time: '5m ago', icon: <Zap size={16} /> },
                         { title: 'Notion', text: 'API connected', time: '10m ago', icon: <Briefcase size={16} /> },
-                        // Duplicate for seamless loop
                         { title: 'Bookmarked', text: 'Tweet saved to Notion', time: 'Just now', icon: <ArrowUpRight size={16} /> },
                         { title: 'Syncing', text: 'Updating database...', time: '2m ago', icon: <Layers size={16} /> },
                         { title: 'Telegram', text: 'Bot active', time: '5m ago', icon: <Zap size={16} /> },
@@ -201,10 +191,10 @@ const Skills = () => {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className="flex justify-between items-center mb-0.5">
-                                    <span className="text-[10px] font-black text-white uppercase tracking-tight">{notif.title}</span>
-                                    <span className="text-[8px] text-white/30 font-bold uppercase">{notif.time}</span>
+                                    <span className="text-[12px] font-black text-white uppercase tracking-tight">{notif.title}</span>
+                                    <span className="text-[10px] text-white/30 font-bold uppercase">{notif.time}</span>
                                 </div>
-                                <p className="text-[10px] text-white/40 font-medium truncate">{notif.text}</p>
+                                <p className="text-[12px] text-white/40 font-medium truncate">{notif.text}</p>
                             </div>
                         </div>
                     ))}
@@ -212,7 +202,6 @@ const Skills = () => {
             </div>
           </motion.div>
 
-          {/* Spotify Card - Vivid Purple Theme */}
           <motion.div 
             whileHover={{ y: -5, borderColor: 'rgba(112, 0, 255, 0.6)' }}
             className="md:col-span-1 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#04000a] border border-accent4/20 p-5 flex items-center gap-3.5 group transition-all duration-500 shadow-[15px_15px_40px_rgba(0,0,0,0.5)]"
@@ -223,20 +212,19 @@ const Skills = () => {
             </div>
             <div className="flex-1 overflow-hidden relative z-10">
                 <div className="flex items-center gap-1 mb-0.5">
-                    <span className="text-[9px] font-bold text-accent4 uppercase tracking-[0.2em] flex items-center gap-1.5">
+                    <span className="text-[12px] font-bold text-accent4 uppercase tracking-[0.2em] flex items-center gap-1.5">
                         <span className="w-1 h-1 rounded-full bg-accent4 animate-pulse shadow-[0_0_8px_#7000ff]"></span>
                         Listening
                     </span>
                 </div>
                 <h4 className="text-base font-black truncate leading-tight tracking-tight bg-gradient-to-r from-white to-accent4 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(112,0,255,0.4)]">Miniskirt</h4>
-                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest truncate">AOA</p>
+                <p className="text-[12px] font-bold text-white/40 uppercase tracking-widest truncate">AOA</p>
             </div>
             <div className="absolute top-4 right-4 text-accent4/60 group-hover:text-accent4 group-hover:rotate-12 transition-all duration-500">
                 <Music size={16} />
             </div>
           </motion.div>
 
-          {/* Typing Speed Card - Electric Cyan Theme */}
           <motion.div 
             whileHover={{ y: -5, borderColor: 'rgba(0, 240, 255, 0.6)' }}
             className="md:col-span-1 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#00060a] border border-accent2/20 p-6 flex flex-col justify-end group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
@@ -244,7 +232,7 @@ const Skills = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(0,240,255,0.2),transparent_70%)]"></div>
             <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-full border border-white/20 z-10 shadow-lg">
                 <Keyboard size={12} className="text-accent2" />
-                <span className="text-[10px] font-bold text-white/60 uppercase tracking-tight">Metrics</span>
+                <span className="text-[12px] font-bold text-white/60 uppercase tracking-tight">Metrics</span>
             </div>
             
             <div className="relative z-10">
@@ -253,14 +241,13 @@ const Skills = () => {
                     <span className="text-5xl font-black tracking-tighter bg-gradient-to-r from-white to-accent2 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,240,255,0.4)]">80</span>
                     <span className="text-base font-black text-accent2 uppercase tracking-widest drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">wpm</span>
                 </div>
-                <div className="flex items-center gap-4 text-[10px] font-bold text-white/50 uppercase tracking-[0.2em]">
+                <div className="flex items-center gap-4 text-xl font-bold text-foreground/80 hover:text-accent2 hover:bg-accent2/10 p-4 rounded-xl transition-all">
                     <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent1 shadow-[0_0_15px_rgba(204,255,0,0.8)]"></span> 15s</span>
                     <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent2 shadow-[0_0_15px_rgba(0,240,255,0.8)]"></span> 100%</span>
                 </div>
             </div>
           </motion.div>
 
-          {/* Social Icons Card */}
           <div className="md:col-span-1 lg:row-span-1 grid grid-cols-3 gap-2.5">
             {['X', 'Figma', 'Framer'].map((icon, idx) => (
                 <motion.div 

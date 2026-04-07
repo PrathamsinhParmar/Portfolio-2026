@@ -6,7 +6,7 @@ const Experience = () => {
     {
       company: "Edunet Foundation",
       role: "AI & Machine Learning Intern",
-      period: "June 2025 – Present",
+      period: "June 2025 – August 2025",
       bullets: [
         "Mastered the fundamentals of AI/ML handling large datasets.",
         "Built and evaluated predictive models utilizing Python frameworks."
@@ -15,7 +15,7 @@ const Experience = () => {
     {
       company: "ShadowFox",
       role: "Web Development Intern",
-      period: "July 2025 – Present",
+      period: "July 2025 – September 2025",
       bullets: [
         "Crafted optimized HTML, CSS, and JS components improving core UX metrics.",
         "Integrated Git workflow protocols for efficient version-controlled development."

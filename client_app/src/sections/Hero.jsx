@@ -34,7 +34,7 @@ const MagneticButton = ({ children, className }) => {
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center px-6 relative overflow-visible pt-32 pb-20">
+    <section id="home" className="min-h-screen flex flex-col justify-center px-6 relative overflow-visible pt-24 pb-16 md:pt-32 md:pb-20">
 
       <div className="container mx-auto max-w-[1400px] z-10">
         
@@ -51,16 +51,15 @@ const Hero = () => {
           </p>
         </motion.div>
 
-        {/* Massive Text Layout aligned exactly like reference */}
-        <div className="flex flex-col mb-18">
+        <div className="flex flex-col mb-12 md:mb-18 gap-2 md:gap-0">
           
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            className="self-start"
+            className="w-full"
           >
-            <h1 className="text-[12vw] sm:text-[10vw] md:text-[9vw] font-black leading-[0.85] tracking-[-0.04em] whitespace-nowrap">
+            <h1 className="text-[13vw] sm:text-[10vw] md:text-[9vw] font-black leading-[0.8] md:leading-[0.85] tracking-[-0.04em] md:whitespace-nowrap uppercase">
                FULL STACK
             </h1>
           </motion.div>
@@ -69,9 +68,9 @@ const Hero = () => {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="self-end md:mr-12 lg:mr-24"
+            className="w-full md:text-right md:mr-12 lg:mr-24"
           >
-            <h1 className="text-[12vw] sm:text-[10vw] md:text-[9vw] font-black leading-[0.85] tracking-[-0.04em] whitespace-nowrap">
+            <h1 className="text-[15vw] sm:text-[12vw] md:text-[9vw] font-black leading-[0.8] md:leading-[0.85] tracking-[-0.04em] md:whitespace-nowrap">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent2 via-accent3 to-accent1 drop-shadow-[0_0_15px_rgba(255,0,85,0.3)]">
                 WEB DEVELOPER
               </span>
@@ -89,7 +88,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8, ease: [0.76, 0, 0.24, 1] }}
             className="max-w-2xl mt-4 mb-4 md:mt-8"
           >
-            <p className="text-2xl md:text-3xl text-white/50 leading-[1.1] font-black tracking-tighter uppercase">
+            <p className="text-xl sm:text-2xl md:text-3xl text-white/50 leading-[1.1] font-black tracking-tighter uppercase">
               ENGINEERING HIGH-PERFORMANCE <span className="text-white">FULL-STACK</span> APPLICATIONS. FOCUSED ON SCALABLE ARCHITECTURES AND <span className="text-accent2">HIGH-IMPACT</span> DIGITAL EXPERIENCES.
             </p>
           </motion.div>

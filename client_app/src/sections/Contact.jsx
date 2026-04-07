@@ -27,10 +27,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 bg-transparent text-white relative">
+    <section id="contact" className="py-20 md:py-32 px-6 bg-transparent text-white relative">
       <div className="container mx-auto max-w-[1400px]">
         
-        <div className="flex items-center gap-6 mb-24">
+        <div className="flex items-center gap-6 mb-16 md:mb-24">
           <div className="w-16 h-[2px] bg-gradient-to-r from-accent1 to-transparent animate-pulse shadow-[0_0_15px_rgba(204,255,0,0.8)]"></div>
           <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-white via-white/90 to-accent1/80 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(204,255,0,0.4)]">
              Say Hello
@@ -48,7 +48,7 @@ const Contact = () => {
             className="flex flex-col justify-between"
           >
             <div>
-              <h3 className="text-5xl md:text-7xl font-black mb-12 tracking-tight leading-none text-white">
+              <h3 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 md:mb-12 tracking-tight leading-none text-white uppercase">
                 LET'S WORK <br /> TOGETHER.
               </h3>
               <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed max-w-md">
@@ -80,7 +80,7 @@ const Contact = () => {
               <div className="relative group">
                 <div className="flex items-baseline gap-4 mb-4">
                   <span className="text-sm font-bold text-accent1 font-mono">01</span>
-                  <label htmlFor="name" className="text-2xl md:text-3xl font-bold text-white/50 group-focus-within:text-white transition-colors">What's your name?</label>
+                  <label htmlFor="name" className="text-xl sm:text-2xl md:text-3xl font-bold text-white/50 group-focus-within:text-white transition-colors">What's your name?</label>
                 </div>
                 <input 
                   type="text" 

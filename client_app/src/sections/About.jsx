@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="py-32 px-6 border-t border-white/10 relative overflow-hidden">
+    <section id="about" className="py-20 md:py-32 px-6 border-t border-white/10 relative overflow-hidden">
       <div className="container mx-auto max-w-[1400px]">
         
-        <div className="flex items-center gap-6 mb-24">
+        <div className="flex items-center gap-6 mb-12 md:mb-24">
           <div className="w-16 h-[2px] bg-gradient-to-r from-accent2 to-transparent animate-pulse shadow-[0_0_15px_rgba(0,240,255,0.8)]"></div>
           <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-white via-white/90 to-accent2/80 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(0,240,255,0.4)]">
              About Me
@@ -21,7 +21,7 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           >
-            <h3 className="text-4xl md:text-5xl font-black mb-8 leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent3 to-accent1 drop-shadow-[0_0_15px_rgba(255,0,85,0.2)]">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 md:mb-8 leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent3 to-accent1 drop-shadow-[0_0_15px_rgba(255,0,85,0.2)]">
               I AM A FULL-STACK DEVELOPER DRIVEN BY IMPACT AND ARTIFICIAL INTELLIGENCE.
             </h3>
             <p className="text-xl text-foreground/60 leading-relaxed mb-12">
@@ -41,7 +41,7 @@ const About = () => {
                   width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" 
                   className="group-hover:translate-x-1 transition-transform"
                 >
-                  <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
+                  <path d="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSstikLXeSSCmIjmdJvuLSA4lsTJ6a8aBOY8A&s"/>
                 </svg>
               </span>
             </a>

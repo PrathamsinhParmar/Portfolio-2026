@@ -88,7 +88,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20, height: 0 }}
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -20, height: 0 }}
-            className="md:hidden px-6 pt-4 overlow-hidden"
+            className="md:hidden px-6 pt-4 overflow-hidden"
           >
             <div className="glass rounded-3xl p-6 flex flex-col space-y-4 shadow-2xl border border-white/10">
               {navLinks.map((link) => (
@@ -96,7 +96,7 @@ const Navbar = () => {
                   key={link.name} 
                   href={link.href} 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 text-lg font-medium text-foreground/80 hover:text-accent2 hover:bg-accent2/10 p-3 rounded-xl transition-all"
+                  className="flex items-center gap-4 text-xl font-bold text-foreground/80 hover:text-accent2 hover:bg-accent2/10 p-4 rounded-xl transition-all"
                 >
                   {link.icon}
                   {link.name}
