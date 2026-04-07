@@ -2,15 +2,52 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
+const API_BASE_URL = 'http://10.86.238.244:5000/api';
+
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [projects, setProjects] = useState([
+    {
+      _id: "p1",
+      title: "AI Code Intel Pro",
+      description: "An advanced engineering tool that performs deep structural and security analysis on source code using Large Language Models, providing automated documentation and vulnerability detection.",
+      githubLink: "https://github.com/PrathamsinhParmar/AI-Code-Intel",
+      liveDemoLink: "https://ai-code-intel.demo.com",
+      technologies: ["Next.js", "OpenAI", "Node.js", "Prism.js"]
+    },
+    {
+      _id: "p2",
+      title: "Lumina OS Simulation",
+      description: "A high-fidelity operating system simulation built for the browser, featuring a window management system, terminal emulator, and custom file system architecture.",
+      githubLink: "https://github.com/PrathamsinhParmar/Lumina-OS",
+      liveDemoLink: "https://lumina-os.demo.com",
+      technologies: ["React", "Framer Motion", "Tailwind CSS", "Canvas API"]
+    },
+    {
+      _id: "p3",
+      title: "CryptoPulse Engine",
+      description: "A real-time cryptocurrency monitoring dashboard with advanced technical indicators, live websocket data streams, and automated price alert systems.",
+      githubLink: "https://github.com/PrathamsinhParmar/CryptoPulse",
+      liveDemoLink: "https://cryptopulse.demo.com",
+      technologies: ["React", "WebSockets", "Chart.js", "Redis"]
+    },
+    {
+      _id: "p4",
+      title: "Vanguard E-Commerce",
+      description: "A high-performance, headless e-commerce architecture optimized for conversion with server-side rendering, global state management, and integrated secure payment flows.",
+      githubLink: "https://github.com/PrathamsinhParmar/Vanguard-Commerce",
+      liveDemoLink: "https://vanguard-commerce.demo.com",
+      technologies: ["Next.js", "Stripe API", "MongoDB", "Redux Toolkit"]
+    }
+  ]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/projects');
-        setProjects(response.data);
+        const response = await axios.get(`${API_BASE_URL}/projects`);
+        if (response.data && response.data.length > 0) {
+          setProjects(response.data);
+        }
       } catch (error) {
         console.error("Error fetching projects", error);
       } finally {

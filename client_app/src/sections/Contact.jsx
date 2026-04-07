@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
+const API_BASE_URL = 'http://10.86.238.244:5000/api';
+
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
@@ -15,7 +17,7 @@ const Contact = () => {
     setStatus({ loading: true, success: false, error: null });
     
     try {
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post(`${API_BASE_URL}/contact`, formData);
       setStatus({ loading: false, success: true, error: null });
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 5000);
