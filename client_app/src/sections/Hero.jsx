@@ -34,12 +34,7 @@ const MagneticButton = ({ children, className }) => {
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center px-6 relative overflow-hidden pt-32 pb-20">
-      
-      {/* Background gradients like reference */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent4/30 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-[-100px] left-[-100px] w-[600px] h-[600px] bg-accent2/20 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-[40%] left-[50%] translate-x-[-50%] w-[800px] h-[400px] bg-accent3/10 rounded-full blur-[200px] pointer-events-none" />
+    <section id="home" className="min-h-screen flex flex-col justify-center px-6 relative overflow-visible pt-32 pb-20">
 
       <div className="container mx-auto max-w-[1400px] z-10">
         
@@ -92,10 +87,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="max-w-md"
+            className="max-w-2xl mt-12 mb-8 md:mt-24"
           >
-            <p className="text-lg md:text-xl text-foreground/60 leading-relaxed font-medium">
-              B.Tech IT student passionate about building smart digital solutions by combining clean code, creativity, and modern framework technologies.
+            <p className="text-2xl md:text-3xl text-white/50 leading-[1.1] font-black tracking-tighter uppercase">
+              ENGINEERING HIGH-PERFORMANCE <span className="text-white">FULL-STACK</span> APPLICATIONS. FOCUSED ON SCALABLE ARCHITECTURES AND <span className="text-accent2">HIGH-IMPACT</span> DIGITAL EXPERIENCES.
             </p>
           </motion.div>
 
@@ -107,10 +102,18 @@ const Hero = () => {
           >
             <MagneticButton>
               <a 
-                href="#projects" 
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-accent1 text-black shadow-[0_0_30px_rgba(204,255,0,0.4)] flex items-center justify-center font-bold text-lg hover:scale-110 transition-transform duration-300"
+                href="#contact" 
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center overflow-hidden hover:scale-105 transition-all duration-300 group relative"
               >
-                Let's Talk
+                {/* Gradient Glow Background */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent2 via-accent3 to-accent1 blur-2xl opacity-40 group-hover:opacity-70 group-hover:scale-110 transition-all duration-500 animate-pulse" />
+                
+                {/* Main Photo */}
+                <img 
+                  src="/Pratham Latest Photo.jpeg" 
+                  alt="Contact" 
+                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 relative z-10" 
+                />
               </a>
             </MagneticButton>
           </motion.div>

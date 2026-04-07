@@ -26,9 +26,12 @@ const Navbar = () => {
           
           {/* Logo Left */}
           <div className="flex-1">
-            <a href="#" className="text-xl font-bold tracking-tight text-foreground group flex items-center gap-2">
-              <span className="bg-foreground text-background w-8 h-8 rounded-full flex items-center justify-center font-black">P</span>
-              Prathamsinh
+            <a href="#" className="w-fit flex items-center gap-3 glass pl-2 pr-5 py-2 rounded-full border border-white/10 group shadow-lg transition-transform hover:scale-[1.02]">
+              <div className="relative flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent2 via-accent3 to-accent1 blur-md opacity-40 group-hover:opacity-100 transition-opacity rounded-full" />
+                <img src="/Pratham Latest Photo.jpeg" alt="Prathamsinh" className="w-9 h-9 rounded-full object-cover border border-white/20 relative z-10" />
+              </div>
+              <span className="text-xl font-semibold tracking-tight text-white">Prathamsinh</span>
             </a>
           </div>
 
@@ -38,10 +41,13 @@ const Navbar = () => {
               <a 
                 key={link.name} 
                 href={link.href} 
-                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-accent2 hover:bg-accent2/10 transition-all"
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-black hover:bg-accent1 transition-all relative overflow-hidden group"
               >
-                {link.icon}
-                {link.name}
+                <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent1 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
+                <span className="relative z-10 flex items-center gap-2">
+                  {link.icon}
+                  {link.name}
+                </span>
               </a>
             ))}
           </nav>
@@ -50,17 +56,26 @@ const Navbar = () => {
           <div className="flex-1 flex justify-end">
              <a 
               href="#contact" 
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${scrolled ? 'bg-accent1 text-black hover:scale-105 shadow-[0_0_15px_rgba(204,255,0,0.5)]' : 'glass text-foreground hover:bg-accent1 hover:text-black hover:shadow-[0_0_15px_rgba(204,255,0,0.5)]'}`}
+              className="relative overflow-hidden flex items-center gap-2 px-8 py-3 rounded-full text-sm font-black transition-all duration-300 glass text-white border-white/10 border hover:text-black hover:border-transparent group"
              >
-               Contact Me
+                {/* ARC Background Fill */}
+                <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent1 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
+                
+                <span className="relative z-10">Contact Me</span>
              </a>
           </div>
         </div>
 
         {/* Mobile View */}
-        <div className="md:hidden flex items-center justify-between glass px-6 py-4 rounded-full">
-          <a href="#" className="font-bold text-lg">Prathamsinh</a>
-          <button className="text-foreground focus:outline-none" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <div className="md:hidden flex items-center justify-between glass pl-3 pr-6 py-3 rounded-full border border-white/10 shadow-lg">
+          <a href="#" className="flex items-center gap-3">
+            <div className="relative flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-tr from-accent2 via-accent3 to-accent1 blur-md opacity-40 rounded-full" />
+              <img src="/Pratham Latest Photo.jpeg" alt="Prathamsinh" className="w-8 h-8 rounded-full object-cover border border-white/20 relative z-10" />
+            </div>
+            <span className="text-lg font-semibold text-white">Prathamsinh</span>
+          </a>
+          <button className="text-white focus:outline-none" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -91,7 +106,7 @@ const Navbar = () => {
                 <a 
                   href="#contact" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-4 bg-accent1 text-black rounded-xl font-bold shadow-[0_0_15px_rgba(204,255,0,0.3)] transition-all hover:scale-[1.02]"
+                  className="flex items-center justify-center gap-2 w-full py-4 glass text-white rounded-xl font-bold border-white/10 shadow-[0_0_15px_rgba(204,255,0,0.3)] transition-all hover:scale-[1.02]"
                 >
                   <Mail size={18} /> Let's Connect
                 </a>

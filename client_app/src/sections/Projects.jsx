@@ -98,10 +98,15 @@ const Projects = () => {
                         href={project.liveDemoLink} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-8 py-4 bg-accent2 text-black font-black rounded-full hover:scale-105 shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-transform"
+                        className="relative overflow-hidden flex items-center justify-center gap-2 px-8 py-4 bg-accent1 text-black font-black rounded-full shadow-[0_0_15px_rgba(204,255,0,0.3)] transition-all group"
                       >
-                        Live Demo
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                        {/* ARC Background Fill */}
+                        <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent2 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[40%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
+                        
+                        <span className="relative z-10 flex items-center gap-2">
+                          Live Demo
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </span>
                       </a>
                     )}
                     {project.githubLink && (
@@ -109,9 +114,12 @@ const Projects = () => {
                         href={project.githubLink}
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="flex items-center justify-center px-8 py-4 border-2 border-white/20 rounded-full font-bold text-white hover:border-accent1 hover:text-accent1 hover:shadow-[0_0_15px_rgba(204,255,0,0.2)] transition-all"
+                        className="relative overflow-hidden flex items-center justify-center px-8 py-4 border-2 border-accent1/30 rounded-full font-black text-white hover:text-black hover:border-transparent transition-all group"
                       >
-                        Source Code
+                        {/* ARC Background Fill */}
+                        <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent1 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[40%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
+                        
+                        <span className="relative z-10 font-black">Source Code</span>
                       </a>
                     )}
                   </div>

@@ -27,8 +27,23 @@ const About = () => {
             <p className="text-xl text-foreground/60 leading-relaxed mb-12">
               Currently pursuing a B.Tech in Information Technology. I focus on building robust applications combining clean code structure with smooth, highly aesthetic frontends.
             </p>
-            <a href="/Prathamsinh_Parmar_Final_Resume.pdf" target="_blank" className="font-bold border-b-2 border-accent1 text-accent1 hover:text-black hover:bg-accent1 transition-all pb-1 px-2 text-lg drop-shadow-[0_0_8px_rgba(204,255,0,0.5)]">
-              Download Resume →
+            <a 
+              href="/Prathamsinh_Parmar_Final_Resume.pdf" 
+              target="_blank" 
+              className="relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-accent1 text-black font-black text-lg rounded-full transition-all group mt-4 mb-2 border-2 border-transparent hover:border-accent2"
+            >
+              {/* ARC Background Fill */}
+              <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent2 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
+              
+              <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 text-black">
+                Download Resume
+                <svg 
+                  width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" 
+                  className="group-hover:translate-x-1 transition-transform"
+                >
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
+                </svg>
+              </span>
             </a>
           </motion.div>
 

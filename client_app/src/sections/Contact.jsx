@@ -25,12 +25,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 bg-accent1 text-black relative">
+    <section id="contact" className="py-32 px-6 bg-transparent text-white relative">
       <div className="container mx-auto max-w-[1400px]">
         
         <div className="flex items-center gap-4 mb-24">
-          <div className="w-12 h-[1px] bg-black/30"></div>
-          <h2 className="text-xl md:text-2xl font-black tracking-tight uppercase">
+          <div className="w-12 h-[1px] bg-white/30"></div>
+          <h2 className="text-xl md:text-2xl font-black tracking-tight uppercase text-white">
              Say Hello
           </h2>
         </div>
@@ -46,22 +46,22 @@ const Contact = () => {
             className="flex flex-col justify-between"
           >
             <div>
-              <h3 className="text-5xl md:text-7xl font-black mb-12 tracking-tight leading-none text-black">
+              <h3 className="text-5xl md:text-7xl font-black mb-12 tracking-tight leading-none text-white">
                 LET'S WORK <br /> TOGETHER.
               </h3>
-              <p className="text-lg md:text-xl text-black/80 font-medium leading-relaxed max-w-md">
+              <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed max-w-md">
                 I'm always open to discussing new engineering projects, creative ideas or opportunities to be part of your visions.
               </p>
             </div>
             
             <div className="mt-16 space-y-8">
               <div>
-                <h4 className="text-sm font-black tracking-widest text-black/50 uppercase mb-2">Email</h4>
-                <a href="mailto:prthamsinhparmar0@gmail.com" className="text-xl md:text-2xl font-bold hover:opacity-70 transition-opacity underline underline-offset-8 decoration-black/20 hover:decoration-black">prthamsinhparmar0@gmail.com</a>
+                <h4 className="text-sm font-black tracking-widest text-white/40 uppercase mb-2">Email</h4>
+                <a href="mailto:prthamsinhparmar0@gmail.com" className="text-xl md:text-2xl font-bold hover:text-accent1 transition-colors underline underline-offset-8 decoration-white/10 hover:decoration-accent1">prthamsinhparmar0@gmail.com</a>
               </div>
               <div>
-                <h4 className="text-sm font-black tracking-widest text-black/50 uppercase mb-2">Location</h4>
-                <p className="text-xl md:text-2xl font-bold">Karjan, Gujarat, India</p>
+                <h4 className="text-sm font-black tracking-widest text-white/40 uppercase mb-2">Location</h4>
+                <p className="text-xl md:text-2xl font-bold text-white">Karjan, Gujarat, India</p>
               </div>
             </div>
           </motion.div>
@@ -77,8 +77,8 @@ const Contact = () => {
               
               <div className="relative group">
                 <div className="flex items-baseline gap-4 mb-4">
-                  <span className="text-sm font-bold text-black/40 font-mono">01</span>
-                  <label htmlFor="name" className="text-2xl md:text-3xl font-bold text-black/80 group-focus-within:text-black transition-colors">What's your name?</label>
+                  <span className="text-sm font-bold text-accent1 font-mono">01</span>
+                  <label htmlFor="name" className="text-2xl md:text-3xl font-bold text-white/50 group-focus-within:text-white transition-colors">What's your name?</label>
                 </div>
                 <input 
                   type="text" 
@@ -87,15 +87,15 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-black/30 py-4 text-xl font-bold text-black focus:outline-none focus:border-black transition-colors placeholder-transparent"
+                  className="w-full bg-transparent border-b-2 border-white/10 py-4 text-xl font-bold text-white focus:outline-none focus:border-accent1 transition-colors placeholder-transparent"
                   placeholder="John Doe"
                 />
               </div>
 
               <div className="relative group">
                 <div className="flex items-baseline gap-4 mb-4">
-                  <span className="text-sm font-bold text-black/40 font-mono">02</span>
-                  <label htmlFor="email" className="text-2xl md:text-3xl font-bold text-black/80 group-focus-within:text-black transition-colors">What's your email?</label>
+                  <span className="text-sm font-bold text-accent2 font-mono">02</span>
+                  <label htmlFor="email" className="text-2xl md:text-3xl font-bold text-white/50 group-focus-within:text-white transition-colors">What's your email?</label>
                 </div>
                 <input 
                   type="email" 
@@ -104,15 +104,15 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-black/30 py-4 text-xl font-bold text-black focus:outline-none focus:border-black transition-colors placeholder-transparent"
+                  className="w-full bg-transparent border-b-2 border-white/10 py-4 text-xl font-bold text-white focus:outline-none focus:border-accent2 transition-colors placeholder-transparent"
                   placeholder="john@doe.com"
                 />
               </div>
 
               <div className="relative group">
                 <div className="flex items-baseline gap-4 mb-4">
-                  <span className="text-sm font-bold text-black/40 font-mono">03</span>
-                  <label htmlFor="message" className="text-2xl md:text-3xl font-bold text-black/80 group-focus-within:text-black transition-colors">Your message</label>
+                  <span className="text-sm font-bold text-accent3 font-mono">03</span>
+                  <label htmlFor="message" className="text-2xl md:text-3xl font-bold text-white/50 group-focus-within:text-white transition-colors">Your message</label>
                 </div>
                 <textarea 
                   id="message"
@@ -121,7 +121,7 @@ const Contact = () => {
                   rows="1"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-black/30 py-4 text-xl font-bold text-black focus:outline-none focus:border-black transition-colors resize-none leading-relaxed placeholder-transparent"
+                  className="w-full bg-transparent border-b-2 border-white/10 py-4 text-xl font-bold text-white focus:outline-none focus:border-accent3 transition-colors resize-none leading-relaxed placeholder-transparent"
                   placeholder="Hello Prathamsinh, can you help me with..."
                 />
               </div>
@@ -130,15 +130,24 @@ const Contact = () => {
                 <button 
                   type="submit" 
                   disabled={status.loading}
-                  className="px-12 py-5 bg-black text-white font-black text-lg rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50 inline-flex items-center gap-3 shadow-[0_0_20px_rgba(0,0,0,0.2)]"
+                  className="relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-accent1 text-black font-black text-lg rounded-full transition-all group mt-4 mb-2 border-2 border-transparent hover:border-accent2"
                 >
-                  {status.loading ? 'Sending...' : 'Send Message'}
-                  {!status.loading && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                  {/* ARC Background Fill */}
+                  <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent2 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
+                  
+                  <span className="relative z-10 flex items-center gap-3">
+                    {status.loading ? 'Sending...' : 'Send Message'}
+                    {!status.loading && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
+                      </svg>
+                    )}
+                  </span>
                 </button>
               </div>
 
-              {status.success && <p className="text-black font-black mt-4 border border-black p-4 rounded-xl inline-block w-fit">Message sent successfully!</p>}
-              {status.error && <p className="text-red-700 font-black mt-4">{status.error}</p>}
+              {status.success && <p className="text-accent1 font-black mt-4 border border-accent1 p-4 rounded-xl inline-block w-fit shadow-[0_0_15px_rgba(204,255,0,0.2)]">Message sent successfully!</p>}
+              {status.error && <p className="text-red-500 font-black mt-4">{status.error}</p>}
             </form>
           </motion.div>
         </div>
