@@ -4,19 +4,27 @@ import { motion } from 'framer-motion';
 const Skills = () => {
   // Ordered array of devicon SVG URLs matching the user's stack
   const techLogos = [
-    { name: 'HTML5', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-    { name: 'CSS3', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-    { name: 'Tailwind', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
-    { name: 'JavaScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-    { name: 'React', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-    { name: 'Node.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-    { name: 'Express', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
-    { name: 'MongoDB', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-    { name: 'Git', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-    { name: 'GitHub', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg' },
-    { name: 'Python', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-    { name: 'C++', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-    { name: 'Java', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' }
+    { name: 'HTML5', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', color: '#E34F26' },
+    { name: 'CSS3', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', color: '#1572B6' },
+    { name: 'Tailwind', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', color: '#06B6D4' },
+    { name: 'JavaScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', color: '#F7DF1E' },
+    { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6' },
+    { name: 'React', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB' },
+    { name: 'Next.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#FFFFFF' },
+    { name: 'Redux', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg', color: '#764ABC' },
+    { name: 'Node.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933' },
+    { name: 'Express', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', color: '#FFFFFF' },
+    { name: 'MongoDB', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248' },
+    { name: 'PostgreSQL', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#4169E1' },
+    { name: 'Git', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', color: '#F05032' },
+    { name: 'GitHub', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', color: '#FFFFFF' },
+    { name: 'Docker', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED' },
+    { name: 'AWS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', color: '#FF9900' },
+    { name: 'Python', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB' },
+    { name: 'C++', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg', color: '#00599C' },
+    { name: 'Java', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', color: '#007396' },
+    { name: 'Postman', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg', color: '#FF6C37' },
+    { name: 'Figma', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', color: '#F24E1E' }
   ];
 
   // We duplicate the array to create a seamless infinite marquee effect
@@ -44,16 +52,27 @@ const Skills = () => {
           </button>
         </motion.div>
 
-        {/* Section Label */}
-        <motion.h3 
+        {/* Section Label Badge */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ delay: 0.1 }}
-          className="bg-accent4 text-white px-6 py-2 rounded-full tracking-widest uppercase font-black text-sm mb-8 drop-shadow-[0_0_10px_rgba(112,0,255,0.6)]"
+          transition={{ 
+            delay: 0.1,
+            duration: 4, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="mb-8"
         >
-          MY TECH STACK
-        </motion.h3>
+          <h3 className="inline-flex items-center gap-3 glass px-8 py-3 rounded-full border border-accent4/30 text-white font-black text-xs tracking-[0.25em] uppercase shadow-[0_0_20px_rgba(112,0,255,0.15)] group hover:border-accent4 transition-colors duration-500">
+            <span className="w-2 h-2 rounded-full bg-accent4 animate-pulse shadow-[0_0_10px_rgba(112,0,255,0.8)]" />
+            MY TECH STACK
+            <span className="text-accent4 group-hover:rotate-12 transition-transform duration-500">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+            </span>
+          </h3>
+        </motion.div>
 
         {/* Highlighted Master Text */}
         <motion.p 
@@ -74,18 +93,33 @@ const Skills = () => {
         <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10"></div>
 
         <motion.div 
-          className="flex whitespace-nowrap min-w-max items-center py-4"
+          className="flex items-center gap-16 md:gap-20 py-12"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 25,
+            duration: 8,
             ease: "linear",
             repeat: Infinity,
             repeatType: 'loop'
           }}
         >
           {duplicatedLogos.map((logo, index) => (
-            <div key={index} className="flex-shrink-0 mx-10 md:mx-16 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300">
-              <img src={logo.src} alt={`${logo.name} logo`} className="h-16 w-16 md:h-20 md:w-20 object-contain" />
+            <div key={index} className="flex-shrink-0 relative group hover:scale-110 transition-all duration-500 cursor-default flex flex-col items-center justify-center">
+              <img 
+                src={logo.src} 
+                alt={`${logo.name} logo`} 
+                className="h-16 w-16 md:h-20 md:w-20 object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all" 
+                style={{ filter: `drop-shadow(0 0 10px ${logo.color}33)` }}
+              />
+              {/* Dynamic Brand-Matched Label */}
+              <span 
+                className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-all duration-500 text-[10px] md:text-sm font-black tracking-[0.25em] uppercase whitespace-nowrap translate-y-4 group-hover:translate-y-0"
+                style={{ 
+                   color: logo.color,
+                   textShadow: `0 0 15px ${logo.color}88` 
+                }}
+              >
+                {logo.name}
+              </span>
             </div>
           ))}
         </motion.div>
