@@ -25,45 +25,61 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 border-t border-white/10 relative">
-      <div className="container mx-auto max-w-7xl">
-        <h2 className="text-4xl md:text-6xl font-black mb-16 tracking-tighter text-center md:text-left">
-          SAY HELLO
-        </h2>
+    <section id="contact" className="py-32 px-6 border-t border-white/10 relative">
+      <div className="container mx-auto max-w-[1400px]">
+        
+        <div className="flex items-center gap-4 mb-24">
+          <div className="w-12 h-[1px] bg-foreground/30"></div>
+          <h2 className="text-xl md:text-2xl font-medium tracking-tight text-foreground/80 uppercase">
+             Say Hello
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+          
+          {/* Text Area */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className="flex flex-col justify-between"
           >
-            <p className="text-xl text-muted mb-8 leading-relaxed max-w-lg">
-              I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions. Let's build something awesome together!
-            </p>
+            <div>
+              <h3 className="text-5xl md:text-7xl font-black mb-12 tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-br from-white to-white/30">
+                LET'S WORK <br /> TOGETHER.
+              </h3>
+              <p className="text-xl text-foreground/60 leading-relaxed max-w-md">
+                I'm always open to discussing new engineering projects, creative ideas or opportunities to be part of your visions.
+              </p>
+            </div>
             
-            <div className="space-y-6">
+            <div className="mt-16 space-y-8">
               <div>
-                <h4 className="text-sm uppercase font-bold tracking-widest text-accent1 mb-1">Email</h4>
-                <a href="mailto:prthamsinhparmar0@gmail.com" className="text-lg hover:text-white transition-colors">prthamsinhparmar0@gmail.com</a>
+                <h4 className="text-sm font-bold tracking-widest text-accent2 uppercase mb-2">Email</h4>
+                <a href="mailto:prthamsinhparmar0@gmail.com" className="text-xl md:text-2xl font-medium hover:text-white transition-colors underline underline-offset-8 decoration-white/20 hover:decoration-white">prthamsinhparmar0@gmail.com</a>
               </div>
               <div>
-                <h4 className="text-sm uppercase font-bold tracking-widest text-accent2 mb-1">Location</h4>
-                <p className="text-lg text-muted">Karjan, Vadodara, Gujarat, India</p>
+                <h4 className="text-sm font-bold tracking-widest text-accent1 uppercase mb-2">Location</h4>
+                <p className="text-xl md:text-2xl font-medium text-foreground/80">Karjan, Gujarat, India</p>
               </div>
             </div>
           </motion.div>
 
+          {/* Form Area matching reference exact borders */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="glass p-8 md:p-12 rounded-3xl flex flex-col space-y-8">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-16 mt-8">
               
-              <div className="relative">
-                <label htmlFor="name" className="text-xs font-bold text-muted uppercase tracking-widest block mb-2">01. Name</label>
+              <div className="relative group">
+                <div className="flex items-baseline gap-4 mb-4">
+                  <span className="text-sm font-medium text-foreground/40 font-mono">01</span>
+                  <label htmlFor="name" className="text-2xl md:text-3xl font-medium text-foreground/80 group-focus-within:text-white transition-colors">What's your name?</label>
+                </div>
                 <input 
                   type="text" 
                   id="name"
@@ -71,13 +87,16 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-white/10 py-3 text-lg focus:outline-none focus:border-accent1 transition-colors bg-transparent placeholder-white/20"
-                  placeholder="Enter your name"
+                  className="w-full bg-transparent border-b border-foreground/30 py-4 text-xl focus:outline-none focus:border-white transition-colors pl-8 placeholder-transparent"
+                  placeholder="John Doe"
                 />
               </div>
 
-              <div className="relative">
-                <label htmlFor="email" className="text-xs font-bold text-muted uppercase tracking-widest block mb-2">02. Email</label>
+              <div className="relative group">
+                <div className="flex items-baseline gap-4 mb-4">
+                  <span className="text-sm font-medium text-foreground/40 font-mono">02</span>
+                  <label htmlFor="email" className="text-2xl md:text-3xl font-medium text-foreground/80 group-focus-within:text-white transition-colors">What's your email?</label>
+                </div>
                 <input 
                   type="email" 
                   id="email"
@@ -85,35 +104,41 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-white/10 py-3 text-lg focus:outline-none focus:border-accent1 transition-colors bg-transparent placeholder-white/20"
-                  placeholder="Enter your email"
+                  className="w-full bg-transparent border-b border-foreground/30 py-4 text-xl focus:outline-none focus:border-white transition-colors pl-8 placeholder-transparent"
+                  placeholder="john@doe.com"
                 />
               </div>
 
-              <div className="relative">
-                <label htmlFor="message" className="text-xs font-bold text-muted uppercase tracking-widest block mb-2">03. Message</label>
+              <div className="relative group">
+                <div className="flex items-baseline gap-4 mb-4">
+                  <span className="text-sm font-medium text-foreground/40 font-mono">03</span>
+                  <label htmlFor="message" className="text-2xl md:text-3xl font-medium text-foreground/80 group-focus-within:text-white transition-colors">Your message</label>
+                </div>
                 <textarea 
                   id="message"
                   name="message"
                   required
-                  rows="4"
+                  rows="1"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-white/10 py-3 text-lg focus:outline-none focus:border-accent1 transition-colors bg-transparent placeholder-white/20 resize-none"
-                  placeholder="Tell me about your project"
+                  className="w-full bg-transparent border-b border-foreground/30 py-4 text-xl focus:outline-none focus:border-white transition-colors pl-8 placeholder-transparent resize-none leading-relaxed"
+                  placeholder="Hello Prathamsinh, can you help me with..."
                 />
               </div>
 
-              <button 
-                type="submit" 
-                disabled={status.loading}
-                className="self-start px-12 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform disabled:opacity-50 disabled:hover:scale-100"
-              >
-                {status.loading ? 'Sending...' : 'Send Message'}
-              </button>
+              <div className="pt-8">
+                <button 
+                  type="submit" 
+                  disabled={status.loading}
+                  className="px-12 py-5 bg-foreground text-background font-black text-lg rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50 inline-flex items-center gap-3"
+                >
+                  {status.loading ? 'Sending...' : 'Send Message'}
+                  {!status.loading && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                </button>
+              </div>
 
-              {status.success && <p className="text-accent1 mt-4">Message sent successfully!</p>}
-              {status.error && <p className="text-red-500 mt-4">{status.error}</p>}
+              {status.success && <p className="text-accent1 mt-4 font-medium">Message sent successfully!</p>}
+              {status.error && <p className="text-red-500 mt-4 font-medium">{status.error}</p>}
             </form>
           </motion.div>
         </div>
