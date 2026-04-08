@@ -106,6 +106,46 @@ const Skills = () => {
     fetchGithubData();
   }, []);
 
+  const [currentTrack, setCurrentTrack] = React.useState({
+    title: 'Miniskirt',
+    artist: 'AOA',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop'
+  });
+
+  React.useEffect(() => {
+    const tracks = [
+      { 
+        title: 'Miniskirt', 
+        artist: 'AOA', 
+        image: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop' 
+      },
+      { 
+        title: 'Starboy', 
+        artist: 'The Weeknd', 
+        image: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=2070&auto=format&fit=crop' 
+      },
+      { 
+        title: 'Blinding Lights', 
+        artist: 'The Weeknd', 
+        image: 'https://images.unsplash.com/photo-1514525253361-bee8718a74a2?q=80&w=2014&auto=format&fit=crop' 
+      },
+      { 
+        title: 'One Dance', 
+        artist: 'Drake', 
+        image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop' 
+      },
+      { 
+        title: 'Lovely', 
+        artist: 'Billie Eilish', 
+        image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2070&auto=format&fit=crop' 
+      }
+    ];
+    
+    // Choose a random track on load
+    const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+    setCurrentTrack(randomTrack);
+  }, []);
+
   return (
     <section id="skills" className="py-24 px-6 relative overflow-hidden bg-transparent">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent4/10 rounded-full blur-[140px] pointer-events-none opacity-50"></div>
@@ -156,24 +196,24 @@ const Skills = () => {
 
           <motion.div 
             whileHover={{ y: -5, borderColor: 'rgba(255, 0, 85, 0.6)' }}
-            className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#0a0005] border border-accent3/20 p-6 flex flex-col justify-between group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+            className="md:col-span-2 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#0a0005] border border-accent3/20 p-5 flex flex-col justify-between group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,0,85,0.15),transparent_70%)]"></div>
             <div className="absolute top-0 right-0 w-48 h-48 bg-accent3/10 rounded-full blur-[60px] -translate-y-1/3 translate-x-1/3 group-hover:bg-accent3/20 transition-all duration-700"></div>
             <div className="relative z-10">
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 w-fit rounded-full border border-white/10 mb-4 shadow-xl">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 w-fit rounded-full border border-white/10 mb-2 shadow-xl">
                 <Briefcase size={12} className="text-accent3" />
                 <span className="text-[12px] font-bold text-white/60 uppercase tracking-tight">Featured work</span>
               </div>
-              <h3 className="text-3xl font-black mb-2 tracking-tighter leading-none bg-gradient-to-r from-white to-accent3 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,0,85,0.4)]">Bookmarked</h3>
-              <p className="text-sm text-white/50 leading-relaxed max-w-[480px] font-medium italic">Effortlessly save and organize your favorite tweets in Notion using a Telegram bot.</p>
+              <h3 className="text-2xl font-black mb-1 tracking-tighter leading-none bg-gradient-to-r from-white to-accent3 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,0,85,0.4)]">Bookmarked</h3>
+              <p className="text-[14px] text-white/50 leading-relaxed max-w-[480px] font-medium italic">Effortlessly save and organize your favorite tweets in Notion using a Telegram bot.</p>
             </div>
             
-            <div className="mt-2 relative h-[160px] overflow-hidden z-10 [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
+            <div className="mt-1 relative h-[90px] overflow-hidden z-10 [mask-image:linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)]">
                 <motion.div 
                     animate={{ y: ["0%", "-50%"] }}
                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    className="flex flex-col gap-2 pt-2"
+                    className="flex flex-col gap-2 pt-1"
                 >
                     {[
                         { title: 'Bookmarked', text: 'Tweet saved to Notion', time: 'Just now', icon: <ArrowUpRight size={16} /> },
@@ -185,16 +225,15 @@ const Skills = () => {
                         { title: 'Telegram', text: 'Bot active', time: '5m ago', icon: <Zap size={16} /> },
                         { title: 'Notion', text: 'API connected', time: '10m ago', icon: <Briefcase size={16} /> }
                     ].map((notif, idx) => (
-                        <div key={idx} className="glass-card px-3 py-2.5 border border-white/10 bg-white/[0.03] rounded-xl flex items-center gap-3 h-12 flex-shrink-0">
-                            <div className="w-8 h-8 rounded-lg bg-accent3/20 flex items-center justify-center text-accent3 shadow-[0_0_15px_rgba(255,0,85,0.2)] flex-shrink-0">
-                                {notif.icon}
+                        <div key={idx} className="glass-card px-3 py-2 border border-white/10 bg-white/[0.03] rounded-xl flex items-center gap-3 h-10 flex-shrink-0">
+                            <div className="w-6 h-6 rounded-lg bg-accent3/20 flex items-center justify-center text-accent3 shadow-[0_0_15px_rgba(255,0,85,0.2)] flex-shrink-0">
+                                {React.cloneElement(notif.icon, { size: 12 })}
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="flex justify-between items-center mb-0.5">
-                                    <span className="text-[12px] font-black text-white uppercase tracking-tight">{notif.title}</span>
-                                    <span className="text-[10px] text-white/30 font-bold uppercase">{notif.time}</span>
+                                <div className="flex justify-between items-center">
+                                    <span className="text-[10px] font-black text-white uppercase tracking-tight">{notif.title}</span>
+                                    <span className="text-[9px] text-white/30 font-bold uppercase">{notif.time}</span>
                                 </div>
-                                <p className="text-[12px] text-white/40 font-medium truncate">{notif.text}</p>
                             </div>
                         </div>
                     ))}
@@ -203,12 +242,52 @@ const Skills = () => {
           </motion.div>
 
           <motion.div 
-            whileHover={{ y: -5, borderColor: 'rgba(112, 0, 255, 0.6)' }}
-            className="md:col-span-1 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#04000a] border border-accent4/20 p-5 flex items-center gap-3.5 group transition-all duration-500 shadow-[15px_15px_40px_rgba(0,0,0,0.5)]"
+            whileHover={{ y: -5, borderColor: 'rgba(0, 240, 255, 0.6)' }}
+            className="md:col-span-1 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#00060a] border border-accent2/20 p-5 flex flex-col justify-between group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(0,240,255,0.2),transparent_70%)]"></div>
+            
+            <div className="flex justify-between items-start relative z-10">
+                <div className="px-3 py-1.5 bg-white/5 rounded-full border border-white/20 shadow-lg">
+                    <Keyboard size={12} className="text-accent2" />
+                </div>
+                <span className="text-[11px] font-black text-white/40 uppercase tracking-[0.2em] pt-1">Typing Proficiency</span>
+            </div>
+            
+            <div className="relative z-10 flex items-end gap-2">
+                <div className="flex flex-col">
+                    <span className="text-6xl font-black tracking-tighter bg-gradient-to-r from-white to-accent2 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,240,255,0.4)] leading-none">50</span>
+                    <span className="text-[12px] font-black text-accent2 uppercase tracking-[0.3em] mt-1 ml-1">Words Per Min</span>
+                </div>
+                <div className="flex flex-col gap-1.5 pb-1 self-end mb-1">
+                    <div className="flex items-center gap-1.5 px-2 py-0.5 bg-white/5 rounded-md border border-white/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent1 shadow-[0_0_8px_#ccff00]"></span>
+                        <span className="text-[10px] font-black text-white/80">15S</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 px-2 py-0.5 bg-white/5 rounded-md border border-white/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent2 shadow-[0_0_8px_#00f0ff]"></span>
+                        <span className="text-[10px] font-black text-white/80">100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="absolute -bottom-4 -right-2 text-[100px] font-black text-accent2/[0.03] select-none leading-none group-hover:text-accent2/[0.08] transition-all duration-700 pointer-events-none">50</div>
+          </motion.div>
+
+          <motion.a 
+            href="https://open.spotify.com/playlist/5SRH2OGCYCRtZTpeQW2VTj?si=5VOiWqTmSVC5P9oQCUYfzg"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ 
+              y: -5, 
+              borderColor: 'rgba(112, 0, 255, 0.6)',
+              backgroundColor: 'rgba(112, 0, 255, 0.05)'
+            }}
+            className="md:col-span-1 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#04000a] border border-accent4/20 p-5 flex items-center gap-3.5 group transition-all duration-500 shadow-[15px_15px_40px_rgba(0,0,0,0.5)] cursor-pointer block"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(112,0,255,0.2),transparent_70%)]"></div>
             <div className="w-12 h-12 rounded-xl overflow-hidden bg-white/5 flex-shrink-0 relative shadow-[0_0_15px_rgba(112,0,255,0.4)] z-10">
-               <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Song art" />
+               <img src={currentTrack.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Song art" />
             </div>
             <div className="flex-1 overflow-hidden relative z-10">
                 <div className="flex items-center gap-1 mb-0.5">
@@ -217,38 +296,18 @@ const Skills = () => {
                         Listening
                     </span>
                 </div>
-                <h4 className="text-base font-black truncate leading-tight tracking-tight bg-gradient-to-r from-white to-accent4 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(112,0,255,0.4)]">Miniskirt</h4>
-                <p className="text-[12px] font-bold text-white/40 uppercase tracking-widest truncate">AOA</p>
+                <h4 className="text-base font-black truncate leading-tight tracking-tight bg-gradient-to-r from-white to-accent4 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(112,0,255,0.4)]">{currentTrack.title}</h4>
+                <p className="text-[12px] font-bold text-white/40 uppercase tracking-widest truncate">{currentTrack.artist}</p>
             </div>
             <div className="absolute top-4 right-4 text-accent4/60 group-hover:text-accent4 group-hover:rotate-12 transition-all duration-500">
                 <Music size={16} />
             </div>
-          </motion.div>
+          </motion.a>
 
-          <motion.div 
-            whileHover={{ y: -5, borderColor: 'rgba(0, 240, 255, 0.6)' }}
-            className="md:col-span-1 md:row-span-2 relative overflow-hidden rounded-2xl bg-[#00060a] border border-accent2/20 p-6 flex flex-col justify-end group transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(0,240,255,0.2),transparent_70%)]"></div>
-            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-full border border-white/20 z-10 shadow-lg">
-                <Keyboard size={12} className="text-accent2" />
-                <span className="text-[12px] font-bold text-white/60 uppercase tracking-tight">Metrics</span>
-            </div>
-            
-            <div className="relative z-10">
-                <div className="absolute -top-12 -right-2 text-[80px] font-black text-accent2/[0.06] select-none leading-none group-hover:text-accent2/[0.12] transition-colors duration-700">80</div>
-                <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-5xl font-black tracking-tighter bg-gradient-to-r from-white to-accent2 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,240,255,0.4)]">80</span>
-                    <span className="text-base font-black text-accent2 uppercase tracking-widest drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">wpm</span>
-                </div>
-                <div className="flex items-center gap-4 text-xl font-bold text-foreground/80 hover:text-accent2 hover:bg-accent2/10 p-4 rounded-xl transition-all">
-                    <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent1 shadow-[0_0_15px_rgba(204,255,0,0.8)]"></span> 15s</span>
-                    <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent2 shadow-[0_0_15px_rgba(0,240,255,0.8)]"></span> 100%</span>
-                </div>
-            </div>
-          </motion.div>
+          {/* Discover Projects Card - White/Glow Theme */}
+          <ProjectDiscoverCard />
 
-          <div className="md:col-span-1 lg:row-span-1 grid grid-cols-3 gap-2.5">
+          <div className="md:col-span-1 md:row-span-1 grid grid-cols-3 gap-2.5">
             {[
               { 
                 icon: (
@@ -297,9 +356,6 @@ const Skills = () => {
                 </motion.a>
             ))}
           </div>
-
-          {/* Discover Projects Card - White/Glow Theme */}
-          <ProjectDiscoverCard />
 
           {/* Github Activity Card - Green Theme */}
           <motion.div 
