@@ -111,7 +111,7 @@ const Skills = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent4/10 rounded-full blur-[140px] pointer-events-none opacity-50"></div>
       
       <div className="container mx-auto max-w-[1200px] relative z-10">
-        <div className="flex items-center gap-6 mb-16">
+        <div className="flex items-center gap-6 mb-10 md:mb-16">
           <div className="w-16 h-[2px] bg-gradient-to-r from-accent4 to-transparent animate-pulse shadow-[0_0_15px_rgba(112,0,255,0.8)]"></div>
           <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-white via-white/90 to-accent4/80 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(112,0,255,0.4)]">
              Expertise & History

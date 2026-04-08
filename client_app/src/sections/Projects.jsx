@@ -73,7 +73,7 @@ const Projects = () => {
       <div className="container mx-auto max-w-[1400px]">
         
         {/* Header Block matching thegr8binil */}
-        <div className="flex items-center gap-6 mb-24">
+        <div className="flex items-center gap-6 mb-10 md:mb-16">
           <div className="w-16 h-[2px] bg-gradient-to-r from-accent4 to-transparent animate-pulse shadow-[0_0_15px_rgba(112,0,255,0.8)]"></div>
           <h2 className="text-2xl md:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-white via-white/90 to-accent4/80 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(112,0,255,0.4)]">
              Selected Works
@@ -93,7 +93,7 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 lg:gap-20 items-center group pt-20 md:pt-28`}
+                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 lg:gap-20 items-center group ${index !== 0 ? 'pt-20 md:pt-28' : ''}`}
               >
                 {/* Visual Side (Mockup image) */}
                  <div className="w-full lg:w-1/2 relative overflow-hidden rounded-3xl aspect-video bg-[#0c0c0c] border border-white/10 group-hover:border-accent1/50 transition-colors duration-500 shadow-2xl">
