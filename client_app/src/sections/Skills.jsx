@@ -30,14 +30,15 @@ const GithubSVG = ({ size = 20, className = "" }) => (
 const ProjectDiscoverCard = () => {
     const [isHovered, setIsHovered] = React.useState(false);
     return (
-        <motion.div 
+        <motion.a 
+            href="#projects"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(255,255,255,0.4)' }}
-            className="md:col-span-2 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#0f0f0f] border border-white/10 p-6 flex items-center justify-between group cursor-pointer transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+            className="md:col-span-2 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#0f0f0f] border border-white/10 p-6 flex items-center justify-between group cursor-pointer transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.5)] block"
         >
             <div className="flex flex-col relative z-20 w-[200px]">
                 <h3 className="text-2xl font-black leading-none mb-1.5 bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">Explore Projects</h3>
@@ -60,7 +61,7 @@ const ProjectDiscoverCard = () => {
             
             {/* Background Accent Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-        </motion.div>
+        </motion.a>
     );
 };
 

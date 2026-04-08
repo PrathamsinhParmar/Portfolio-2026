@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Loader = ({ onLoadingComplete }) => {
   const [show, setShow] = useState(true);
-  const words = ["Hello", "नमस्ते", "કેમ છો Developer ?", "મજામાં ને ?", "રુત્વા, વાત તો કર !"];
+  const words = ["Hello", "नमस्ते", "કેમ છો Developer ?", "મજામાં ને ?",];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
