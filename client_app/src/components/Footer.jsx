@@ -72,15 +72,17 @@ const Footer = () => {
               </li>
               <li>
                 <motion.a 
-                  href="#" 
+                  href="https://www.instagram.com/parmarprathamsinh/" target="_blank" rel="noreferrer"
                   className="flex items-center gap-3 transition-colors"
-                  whileHover={{ x: 8, color: "#ea4c89" }}
+                  whileHover={{ x: 8, color: "#e1306c" }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#ea4c89] flex items-center justify-center shadow-[0_0_15px_rgba(234,76,137,0.3)] transition-all">
-                      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm8.46 9.4c-.05-.03-2.31-1.32-4.99-.81a10.98 10.98 0 00-1.35-2.65c2.4-1.02 3.42-2.52 3.47-2.6a8.04 8.04 0 012.87 6.06zM17.06 4.7c-.03.04-1.03 1.51-3.32 2.51a20.08 20.08 0 00-3.57-5.1A8.04 8.04 0 0117.06 4.7M9.23 2.76c.19.23 1.25 1.56 2.05 3.3a18.06 18.06 0 00-5.83 1.7A8.02 8.02 0 019.23 2.76M3.6 12c0-.52.05-1.03.14-1.52A18.88 18.88 0 019.98 8.8a18.23 18.23 0 00-.91 4.22c-2.45.54-4.82.49-4.94.49A8.02 8.02 0 003.6 12m.53 3.45c.18-.01 2.37.04 4.88-.47a24.36 24.36 0 002.58 6.4 8.01 8.01 0 01-7.46-5.93m9.2 6.4a22.25 22.25 0 01-2.44-6c2.72-.63 4.95-1.9 5.2-2.05a8.03 8.03 0 01-2.76 8.05z"/></svg>
+                  <div className="w-8 h-8 rounded-full bg-[#e1306c] flex items-center justify-center shadow-[0_0_15px_rgba(225,48,108,0.3)] transition-all">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-white">
+                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                    </svg>
                   </div>
-                  Dribble
+                  Instagram
                 </motion.a>
               </li>
               <li>

@@ -54,7 +54,7 @@ const Hero = () => {
         >
           <div className="w-12 h-[1px] bg-foreground/30"></div>
           <p className="text-xl md:text-2xl font-medium tracking-tight text-foreground/80">
-            Hello, I'm Prathamsinh Parmar
+            Hello, I'm Prathamsinh Rajput
           </p>
         </motion.div>
 
