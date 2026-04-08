@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 
 import CustomCursor from './components/CustomCursor';
+import MaskEffect   from './components/MaskEffect';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollProgress from './components/ScrollProgress';
 import { ReactLenis } from '@studio-freight/react-lenis';
@@ -14,6 +15,7 @@ function App() {
         <ScrollProgress />
         <SmoothScroll />
         <CustomCursor />
+        <MaskEffect />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

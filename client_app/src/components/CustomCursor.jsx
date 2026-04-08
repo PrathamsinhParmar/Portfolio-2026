@@ -6,9 +6,12 @@ const CustomCursor = () => {
   const trailsRef = useRef([]);
 
   const [isHovering, setIsHovering] = useState(false);
+  const [isOnText,   setIsOnText]   = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [scrollSpeed, setScrollSpeed] = useState(0);
   const [moveSpeed, setMoveSpeed] = useState(0);
+
+  const TEXT_ELS = 'h1,h2,h3,h4,h5,h6,p,a,button,li,span,label,blockquote';
 
   useEffect(() => {
     // Hide on touch devices
@@ -79,12 +82,18 @@ const CustomCursor = () => {
       if (e.target.closest('a, button, input, textarea, select, [role="button"], .group\\/btn')) {
         setIsHovering(true);
       }
+      // Text-element detection for enlarged cursor ring
+      const isText =
+        e.target.matches(TEXT_ELS) ||
+        e.target.closest(TEXT_ELS) !== null;
+      setIsOnText(isText);
     };
 
     const handleMouseOut = (e) => {
       if (e.target.closest('a, button, input, textarea, select, [role="button"], .group\\/btn')) {
         setIsHovering(false);
       }
+      setIsOnText(false);
     };
     
     const handleMouseDown = () => setIsClicking(true);
@@ -138,17 +147,25 @@ const CustomCursor = () => {
       <style>
         {`
           @media (pointer: fine) {
-            body, a, button, input, textarea, select, [role="button"] {
+            *, body, a, button, input, textarea, select, [role="button"] {
               cursor: none !important;
             }
           }
+
           @keyframes cursor-breathe {
-            0% { filter: drop-shadow(0 0 2px rgba(0,240,255,0.4)); }
-            50% { filter: drop-shadow(0 0 8px rgba(0,240,255,0.8)); }
-            100% { filter: drop-shadow(0 0 2px rgba(0,240,255,0.4)); }
+            0%   { filter: drop-shadow(0 0 2px  rgba(0,240,255,0.4)); }
+            50%  { filter: drop-shadow(0 0 10px rgba(0,240,255,0.9)); }
+            100% { filter: drop-shadow(0 0 2px  rgba(0,240,255,0.4)); }
           }
           .breathe-animation {
             animation: cursor-breathe 2.5s infinite ease-in-out;
+          }
+
+          /* Neon text glow that activates on text-hover via CSS custom prop */
+          @media (pointer: fine) {
+            h1, h2, h3, h4, h5, h6, p, li, blockquote {
+              transition: text-shadow 0.45s cubic-bezier(0.23,1,0.32,1);
+            }
           }
         `}
       </style>
@@ -187,17 +204,43 @@ const CustomCursor = () => {
           }}
         />
 
-        {/* Visual elements */}
+        {/* Visual elements – ring */}
         <div 
-          className="absolute -top-[14px] -left-[14px] w-[28px] h-[28px] rounded-full border-2 transition-all duration-300 ease-out mix-blend-screen breathe-animation"
+          className="absolute rounded-full border-2 transition-all ease-out mix-blend-screen breathe-animation"
           style={{
-            borderColor: isHovering ? '#CCFF00' : (isClicking ? '#FF0055' : '#00f0ff'),
-            backgroundColor: isHovering ? 'rgba(204, 255, 0, 0.15)' : (isClicking ? 'rgba(255, 0, 85, 0.3)' : 'transparent'),
-            transform: isHovering 
-              ? 'scale(1.6)' 
-              : isClicking 
-                 ? 'scale(0.8)'
-                 : `scale(${1 - Math.min(scrollSpeed * 0.01, 0.4)}) ` + (scrollSpeed > 0 ? 'skewY(' + Math.min(scrollSpeed, 20) + 'deg)' : ''),
+            /* isOnText → 3× larger ring with neon cyan, isHovering (btn) → neon green */
+            width:  isOnText ? '56px' : '28px',
+            height: isOnText ? '56px' : '28px',
+            top:    isOnText ? '-28px' : '-14px',
+            left:   isOnText ? '-28px' : '-14px',
+            transitionDuration: '380ms',
+            transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+            borderColor: isHovering
+              ? '#CCFF00'
+              : isOnText
+                ? '#00f0ff'
+                : isClicking
+                  ? '#FF0055'
+                  : '#00f0ff',
+            borderWidth:     isOnText ? '1.5px' : '2px',
+            backgroundColor: isHovering
+              ? 'rgba(204,255,0,0.08)'
+              : isOnText
+                ? 'rgba(0,240,255,0.05)'
+                : isClicking
+                  ? 'rgba(255,0,85,0.25)'
+                  : 'transparent',
+            boxShadow: isOnText
+              ? '0 0 12px rgba(0,240,255,0.5), 0 0 28px rgba(0,120,255,0.3), inset 0 0 8px rgba(0,240,255,0.1)'
+              : isHovering
+                ? '0 0 10px rgba(204,255,0,0.4)'
+                : 'none',
+            transform: isHovering
+              ? 'scale(1.6)'
+              : isClicking
+                ? 'scale(0.8)'
+                : `scale(${1 - Math.min(scrollSpeed * 0.01, 0.4)})` +
+                  (scrollSpeed > 0 ? ` skewY(${Math.min(scrollSpeed,20)}deg)` : ''),
             opacity: scrollSpeed > 0 ? 0.6 : 1
           }}
         />
