@@ -46,78 +46,27 @@
   -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   NEON MASK EFFECT  — cursor spotlight that reveals neon text colours
-   CSS custom properties  --mask-x / --mask-y / --mask-size  are written
-   each animation frame by MaskEffect.jsx via JS.
-   ═══════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   NEON MASK EFFECT — backdrop-filter based contrast mask
+   MaskEffect.jsx applies backdrop-filter:invert+hue-rotate
+   to a clip-path circle that follows the cursor.
+   ═══════════════════════════════════════════════════════════════ */
 
-/* 1 ── Pulsing neon-ring keyframes used by the spotlight overlay           */
-@keyframes neon-ring-pulse {
-  0%, 100% {
+/* Pulsing ring animation (used by the MaskEffect glow ring) */
+@keyframes mask-ring-pulse {
+  0%,100% {
     box-shadow:
-      0 0  6px rgba(0,240,255,0.3),
-      0 0 18px rgba(0,120,255,0.2),
-      inset 0 0  6px rgba(0,240,255,0.1);
+      0 0  6px rgba(0,200,255,0.4),
+      0 0 20px rgba(0,100,255,0.25);
   }
   50% {
     box-shadow:
-      0 0 14px rgba(0,240,255,0.7),
-      0 0 36px rgba(0,120,255,0.4),
-      inset 0 0 12px rgba(0,240,255,0.25);
+      0 0 14px rgba(0,220,255,0.75),
+      0 0 40px rgba(0,100,255,0.45);
   }
 }
 
-/* 2 ── Subtle scan-line shimmer for the spotlight interior                 */
-@keyframes scanline-drift {
-  0%   { background-position: 0 0; }
-  100% { background-position: 0 100px; }
-}
-
-/* 3 ── Neon colour gradient across the spotlight blob                      */
-@keyframes neon-hue-shift {
-  0%   { filter: hue-rotate(0deg)   brightness(1.1); }
-  50%  { filter: hue-rotate(20deg)  brightness(1.3); }
-  100% { filter: hue-rotate(0deg)   brightness(1.1); }
-}
-
-/* 4 ── Text neon reveal
-   Applied via a <span class="neon-reveal-text"> wrapper OR
-   directly on heading / paragraph elements that want the effect.
-   Uses a radial-gradient background-clip trick:
-      inside the cursor circle  → neon cyan/blue gradient
-      outside the cursor circle → inherits currentColor (transparent clip trick)
-   NOTE: This is purely additive — it does NOT break existing gradient text.
-   ─────────────────────────────────────────────────────────────────────── */
-@media (pointer: fine) {
-  h1, h2, h3, h4, h5, h6 {
-    /* We cannot use background-clip here without breaking existing
-       gradient headings, so we rely on the mix-blend-mode spotlight
-       from MaskEffect.jsx to colour the text. Instead we add a matching
-       text-shadow that pulses only when the CSS var --mask-active is 1.
-       JS toggles the class .mask-on when over text. */
-    transition: text-shadow 0.45s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  /* Class toggled by MaskEffect when cursor is inside the spotlight */
-  .mask-text-glow h1,
-  .mask-text-glow h2,
-  .mask-text-glow h3 {
-    text-shadow:
-      0 0  6px rgba(0,240,255,0.5),
-      0 0 18px rgba(0,120,255,0.3),
-      0 0 40px rgba(0,200,255,0.15);
-  }
-  .mask-text-glow p,
-  .mask-text-glow li,
-  .mask-text-glow a {
-    text-shadow:
-      0 0  4px rgba(0,240,255,0.4),
-      0 0 14px rgba(0,120,255,0.25);
-  }
-}
-
-/* 5 ── Utility class: apply to any element whose inner text should glow    */
+/* Utility: neon cyan text */
 .neon-text {
   color: #00f0ff;
   text-shadow:
@@ -126,6 +75,7 @@
     0 0 30px rgba(0,120,255,0.4);
 }
 
+/* Utility: neon blue text */
 .neon-text-blue {
   color: #0088ff;
   text-shadow:
@@ -134,12 +84,14 @@
     0 0 32px rgba(0,80,255,0.35);
 }
 
-/* 6 ── Glowing border helper (use on cards / wrappers inside spotlight)    */
+/* Utility: glowing border */
 .neon-border {
   border-color: rgba(0,240,255,0.6) !important;
   box-shadow:
     0 0  6px rgba(0,240,255,0.3),
     0 0 18px rgba(0,120,255,0.2),
     inset 0 0  6px rgba(0,240,255,0.08);
-  animation: neon-ring-pulse 2.5s ease-in-out infinite;
+  animation: mask-ring-pulse 2.5s ease-in-out infinite;
 }
+
+

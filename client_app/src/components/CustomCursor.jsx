@@ -192,50 +192,51 @@ const CustomCursor = () => {
         className="fixed top-0 left-0 pointer-events-none z-[9999] will-change-transform"
       >
         {/* Colorful Scroll Glow Effect */}
+        {/* Glow blob — hidden when text-mask is active */}
         <div 
           className="absolute -top-[40px] -left-[40px] w-[80px] h-[80px] rounded-full pointer-events-none transition-all duration-300 mix-blend-screen"
           style={{
             background: isHovering 
                 ? 'radial-gradient(circle, rgba(204,255,0,0.6) 0%, rgba(0,240,255,0.4) 50%, transparent 100%)' 
                 : 'radial-gradient(circle, rgba(0,240,255,0.8) 0%, rgba(255,0,85,0.5) 40%, rgba(204,255,0,0.2) 70%, transparent 100%)',
-            opacity: scrollSpeed > 5 || isHovering || isClicking ? 0.9 : 0,
+            opacity: isOnText ? 0 : (scrollSpeed > 5 || isHovering || isClicking ? 0.9 : 0),
             transform: `scale( ${isClicking ? 1.8 : 1 + Math.min(scrollSpeed * 0.015, 1.5)} )`,
             filter: 'blur(15px)'
           }}
         />
 
-        {/* Visual elements – ring */}
+        {/* Visual elements – ring (grows 3.2× on text hover to match mask boundary) */}
         <div 
-          className="absolute rounded-full border-2 transition-all ease-out mix-blend-screen breathe-animation"
+          className="absolute rounded-full transition-all ease-out mix-blend-screen breathe-animation"
           style={{
-            /* isOnText → 3× larger ring with neon cyan, isHovering (btn) → neon green */
-            width:  isOnText ? '56px' : '28px',
-            height: isOnText ? '56px' : '28px',
-            top:    isOnText ? '-28px' : '-14px',
-            left:   isOnText ? '-28px' : '-14px',
-            transitionDuration: '380ms',
+            width:  isOnText ? '90px' : '28px',
+            height: isOnText ? '90px' : '28px',
+            top:    isOnText ? '-45px' : '-14px',
+            left:   isOnText ? '-45px' : '-14px',
+            transitionDuration: '400ms',
             transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+            borderStyle: 'solid',
             borderColor: isHovering
               ? '#CCFF00'
               : isOnText
-                ? '#00f0ff'
+                ? 'rgba(0,220,255,0.8)'
                 : isClicking
                   ? '#FF0055'
                   : '#00f0ff',
             borderWidth:     isOnText ? '1.5px' : '2px',
-            backgroundColor: isHovering
+            backgroundColor: isOnText ? 'transparent' : isHovering
               ? 'rgba(204,255,0,0.08)'
-              : isOnText
-                ? 'rgba(0,240,255,0.05)'
-                : isClicking
-                  ? 'rgba(255,0,85,0.25)'
-                  : 'transparent',
+              : isClicking
+                ? 'rgba(255,0,85,0.25)'
+                : 'transparent',
             boxShadow: isOnText
-              ? '0 0 12px rgba(0,240,255,0.5), 0 0 28px rgba(0,120,255,0.3), inset 0 0 8px rgba(0,240,255,0.1)'
+              ? '0 0 20px rgba(0,220,255,0.6), 0 0 44px rgba(0,100,255,0.35), inset 0 0 12px rgba(0,220,255,0.12)'
               : isHovering
                 ? '0 0 10px rgba(204,255,0,0.4)'
                 : 'none',
-            transform: isHovering
+            transform: isOnText
+              ? 'scale(1)'
+              : isHovering
               ? 'scale(1.6)'
               : isClicking
                 ? 'scale(0.8)'
