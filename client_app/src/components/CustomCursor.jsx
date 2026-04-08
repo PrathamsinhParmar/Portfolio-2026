@@ -82,10 +82,12 @@ const CustomCursor = () => {
       if (e.target.closest('a, button, input, textarea, select, [role="button"], .group\\/btn')) {
         setIsHovering(true);
       }
-      // Text-element detection for enlarged cursor ring
-      const isText =
-        e.target.matches(TEXT_ELS) ||
-        e.target.closest(TEXT_ELS) !== null;
+      // Don't enlarge ring inside navbar (header) or over images/media
+      const inNav   = !!e.target.closest('nav, header');
+      const isMedia = e.target.matches('img, picture, video, canvas, svg') ||
+                      !!e.target.closest('img, picture, video, canvas');
+      const isText  = !inNav && !isMedia &&
+        (e.target.matches(TEXT_ELS) || e.target.closest(TEXT_ELS) !== null);
       setIsOnText(isText);
     };
 

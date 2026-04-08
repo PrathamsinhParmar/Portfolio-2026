@@ -76,9 +76,19 @@ export default function MaskEffect() {
       tgt.current = { x: e.clientX, y: e.clientY };
 
       const el = document.elementFromPoint(e.clientX, e.clientY);
-      const hit = el
-        ? el.matches(TEXT_SELECTORS) || !!el.closest(TEXT_SELECTORS)
-        : false;
+
+      // ── Exclusion zones: navbar + any image/media element ──────────────
+      const inNav   = el ? !!el.closest('nav, header, [data-no-mask]') : true;
+      const isMedia = el
+        ? el.matches('img, picture, video, canvas, svg, [class*="avatar"], [class*="photo"]') ||
+          !!el.closest('img, picture, video, canvas, [class*="avatar"], [class*="photo"]')
+        : true;
+
+      const hit =
+        !inNav &&
+        !isMedia &&
+        el &&
+        (el.matches(TEXT_SELECTORS) || !!el.closest(TEXT_SELECTORS));
 
       if (hit !== onText.current) {
         onText.current  = hit;
@@ -149,10 +159,10 @@ export default function MaskEffect() {
           zIndex:        9994,
           willChange:    'clip-path',
           /* These two lines do all the heavy lifting */
-          backdropFilter:         'invert(1) hue-rotate(195deg) saturate(2) brightness(1.1)',
-          WebkitBackdropFilter:   'invert(1) hue-rotate(195deg) saturate(2) brightness(1.1)',
-          /* Subtle neon-blue tint layered on top of the inversion */
-          background:    'rgba(0, 60, 255, 0.07)',
+          backdropFilter:         'invert(1) hue-rotate(110deg) saturate(2.4) brightness(1.1)',
+          WebkitBackdropFilter:   'invert(1) hue-rotate(110deg) saturate(2.4) brightness(1.1)',
+          /* Vibrant neon-blue tint remains for neutral areas */
+          background:    'rgba(0, 70, 255, 0.1)',
           transition:    'opacity 0.25s ease',
         }}
       />
