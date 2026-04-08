@@ -4,6 +4,7 @@ import Home from './pages/Home';
 
 import CustomCursor from './components/CustomCursor';
 import MaskEffect   from './components/MaskEffect';
+import BackgroundMusic from './components/BackgroundMusic';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollProgress from './components/ScrollProgress';
 import { ReactLenis } from '@studio-freight/react-lenis';
@@ -12,6 +13,7 @@ function App() {
   return (
     <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothTouch: false }}>
       <Router>
+        <BackgroundMusic />
         <ScrollProgress />
         <SmoothScroll />
         <CustomCursor />
