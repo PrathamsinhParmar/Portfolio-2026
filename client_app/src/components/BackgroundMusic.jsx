@@ -10,6 +10,7 @@ const BackgroundMusic = () => {
   useEffect(() => {
     const handleStart = () => {
       if (audioRef.current) {
+        audioRef.current.volume = 0.15; // subtle background ambience
         audioRef.current.play()
           .then(() => setIsPlaying(true))
           .catch(err => console.log("Autoplay blocked:", err));
@@ -23,7 +24,13 @@ const BackgroundMusic = () => {
   const toggleMute = () => {
     if (!audioRef.current) return;
     const nextMute = !isMuted;
-    audioRef.current.muted = nextMute;
+    
+    if (nextMute) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch(err => console.log("Play error:", err));
+    }
+    
     setIsMuted(nextMute);
   };
 
@@ -36,7 +43,7 @@ const BackgroundMusic = () => {
         preload="auto"
       />
       
-      <div className="fixed bottom-8 right-8 z-[9997] flex items-center gap-3">
+      <div className="fixed bottom-8 right-8 z-[10001] flex items-center gap-3">
         <AnimatePresence>
           {isPlaying && (
             <motion.button
