@@ -5,10 +5,25 @@ import { Home, FolderGit2, User, Menu, X, Mail } from 'lucide-react';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 50);
+
+      // Hide if scrolling down past absolute threshold. Show if scrolling up.
+      if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -19,7 +34,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-500 py-6`}>
+    <header className={`fixed top-0 w-full z-50 transition-all duration-500 py-6 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="container mx-auto px-6 max-w-[1400px]">
         {/* Desktop View */}
         <div className="hidden md:flex items-center justify-between">

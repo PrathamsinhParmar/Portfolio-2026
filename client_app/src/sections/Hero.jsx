@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 // Custom Magnetic Button Hook/Component logic inside Hero for proximity to the element
 const MagneticButton = ({ children, className }) => {
@@ -33,6 +33,11 @@ const MagneticButton = ({ children, className }) => {
 };
 
 const Hero = () => {
+  const { scrollY } = useScroll();
+  const yText1 = useTransform(scrollY, [0, 1000], [0, 150]);
+  const yText2 = useTransform(scrollY, [0, 1000], [0, -100]);
+  const yPhoto = useTransform(scrollY, [0, 1000], [0, 200]);
+
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center px-6 relative overflow-visible pt-24 pb-16 md:pt-32 md:pb-20">
 
@@ -58,6 +63,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.76, 0, 0.24, 1] }}
             className="w-full"
+            style={{ y: yText1 }}
           >
             <h1 className="text-[13vw] sm:text-[10vw] md:text-[9vw] font-black leading-[0.8] md:leading-[0.85] tracking-[-0.04em] md:whitespace-nowrap uppercase">
                FULL STACK
@@ -69,6 +75,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
             className="w-full md:text-right md:mr-12 lg:mr-24"
+            style={{ y: yText2 }}
           >
             <h1 className="text-[15vw] sm:text-[12vw] md:text-[9vw] font-black leading-[0.8] md:leading-[0.85] tracking-[-0.04em] md:whitespace-nowrap">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent2 via-accent3 to-accent1 drop-shadow-[0_0_15px_rgba(255,0,85,0.3)]">
@@ -98,6 +105,7 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 1, ease: [0.76, 0, 0.24, 1] }}
             className="pb-4"
+            style={{ y: yPhoto }}
           >
             <MagneticButton>
               <a 
