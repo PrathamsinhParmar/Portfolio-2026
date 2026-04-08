@@ -209,10 +209,10 @@ const CustomCursor = () => {
         <div 
           className="absolute rounded-full transition-all ease-out mix-blend-screen breathe-animation"
           style={{
-            width:  isOnText ? '90px' : '28px',
-            height: isOnText ? '90px' : '28px',
-            top:    isOnText ? '-45px' : '-14px',
-            left:   isOnText ? '-45px' : '-14px',
+            width:  isOnText ? '52px' : '28px',
+            height: isOnText ? '52px' : '28px',
+            top:    isOnText ? '-26px' : '-14px',
+            left:   isOnText ? '-26px' : '-14px',
             transitionDuration: '400ms',
             transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
             borderStyle: 'solid',
