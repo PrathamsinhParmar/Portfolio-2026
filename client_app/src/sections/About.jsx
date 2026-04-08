@@ -27,9 +27,15 @@ const About = () => {
             <p className="text-xl text-foreground/60 leading-relaxed mb-12">
               Currently pursuing a B.Tech in Information Technology. I focus on building robust applications combining clean code structure with smooth, highly aesthetic frontends.
             </p>
-            <a 
+            <motion.a 
               href="/Prathamsinh_Parmar_Final_Resume.pdf" 
               target="_blank" 
+              whileHover={{ 
+                y: [0, -10, 5, 0], 
+                x: [0, 8, -4, 0], 
+                rotate: [-0.6, 0.6, -0.6, 0.6, 0],
+                transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" } 
+              }}
               className="relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-accent1 text-black font-black text-lg rounded-full transition-all group mt-4 mb-2 border-2 border-transparent hover:border-accent2"
             >
               {/* ARC Background Fill */}
@@ -44,7 +50,7 @@ const About = () => {
                   <path d="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSstikLXeSSCmIjmdJvuLSA4lsTJ6a8aBOY8A&s"/>
                 </svg>
               </span>
-            </a>
+            </motion.a>
           </motion.div>
 
           <div className="space-y-16">
@@ -60,16 +66,24 @@ const About = () => {
                 <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
                   <span className="text-foreground/40 font-mono font-bold w-32 shrink-0 group-hover:text-accent2 transition-colors">Aug 2023 - 2027</span>
                   <div>
-                    <h5 className="text-2xl font-black mb-2 group-hover:text-accent1 transition-colors drop-shadow-[0_0_5px_rgba(204,255,0,0)] group-hover:drop-shadow-[0_0_10px_rgba(204,255,0,0.4)]">B.Tech - Information Tech.</h5>
-                    <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">Drs. Kiran & Pallavi Patel Global University</p>
+                    <h5 className="text-2xl font-black mb-2 group-hover:text-accent1 transition-colors drop-shadow-[0_0_5px_rgba(204,255,0,0)] group-hover:drop-shadow-[0_0_10px_rgba(204,255,0,0.4)]">Drs. Kiran & Pallavi Patel Global University</h5>
+                    <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">Bachelor of Technology - Information Technology</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
                   <span className="text-foreground/40 font-mono font-bold w-32 shrink-0 group-hover:text-accent3 transition-colors">May 2021 - 2023</span>
                   <div>
-                    <h5 className="text-2xl font-black mb-2 group-hover:text-accent2 transition-colors drop-shadow-[0_0_5px_rgba(0,240,255,0)] group-hover:drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">Higher Secondary (Science)</h5>
-                    <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">Aditi Science School</p>
+                    <h5 className="text-2xl font-black mb-2 group-hover:text-accent2 transition-colors drop-shadow-[0_0_5px_rgba(0,240,255,0)] group-hover:drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">Aditi Science School</h5>
+                    <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">Higher Secondary Education (11th & 12th Science)</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
+                  <span className="text-foreground/40 font-mono font-bold w-32 shrink-0 group-hover:text-accent1 transition-colors">Jun 2008 - May 2021</span>
+                  <div>
+                    <h5 className="text-2xl font-black mb-2 group-hover:text-accent3 transition-colors drop-shadow-[0_0_5px_rgba(255,0,85,0)] group-hover:drop-shadow-[0_0_10px_rgba(255,0,85,0.4)]">Shah N. B. Sarvjanik Highschool</h5>
+                    <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">All Primary Education & Secondary School Education</p>
                   </div>
                 </div>
 

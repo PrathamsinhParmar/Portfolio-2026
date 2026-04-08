@@ -129,8 +129,14 @@ const Contact = () => {
               </div>
 
               <div className="pt-8">
-                <button 
+                <motion.button 
                   type="submit" 
+                  whileHover={{ 
+                    y: [0, -10, 5, 0], 
+                    x: [0, 8, -4, 0], 
+                    rotate: [-0.6, 0.6, -0.6, 0.6, 0],
+                    transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" } 
+                  }}
                   disabled={status.loading}
                   className="relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-accent1 text-black font-black text-lg rounded-full transition-all group mt-4 mb-2 border-2 border-transparent hover:border-accent2"
                 >
@@ -145,7 +151,7 @@ const Contact = () => {
                       </svg>
                     )}
                   </span>
-                </button>
+                </motion.button>
               </div>
 
               {status.success && <p className="text-accent1 font-black mt-4 border border-accent1 p-4 rounded-xl inline-block w-fit shadow-[0_0_15px_rgba(204,255,0,0.2)]">Message sent successfully!</p>}

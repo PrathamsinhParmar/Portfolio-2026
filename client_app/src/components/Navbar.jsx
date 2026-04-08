@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 max-w-[1400px]">
         {/* Desktop View */}
         <div className="hidden md:flex items-center justify-between">
-          
+
           {/* Logo Left */}
           <div className="flex-1">
             <a href="#" className="w-fit flex items-center gap-3 glass pl-2 pr-5 py-2 rounded-full border border-white/10 group shadow-lg transition-transform hover:scale-[1.02]">
@@ -53,9 +53,10 @@ const Navbar = () => {
           {/* Central Pill Nav */}
           <nav className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-500 ${scrolled ? 'glass shadow-2xl' : 'bg-transparent'}`}>
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
+              <motion.a
+                key={link.name}
+                href={link.href}
+                whileHover={{ rotate: [-1, 1, -1, 1, 0], transition: { duration: 0.3 } }}
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-foreground/80 hover:text-black hover:bg-accent1 transition-all relative overflow-hidden group"
               >
                 <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent1 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
@@ -63,21 +64,22 @@ const Navbar = () => {
                   {link.icon}
                   {link.name}
                 </span>
-              </a>
+              </motion.a>
             ))}
           </nav>
 
           {/* Right Contact Button */}
           <div className="flex-1 flex justify-end">
-             <a 
-              href="#contact" 
+            <motion.a
+              href="#contact"
+              whileHover={{ rotate: [-0.6, 0.6, -0.6, 0.6, 0], transition: { duration: 0.3 } }}
               className="relative overflow-hidden flex items-center gap-2 px-8 py-3 rounded-full text-sm font-black transition-all duration-300 glass text-white border-white/10 border hover:text-black hover:border-transparent group"
-             >
-                {/* ARC Background Fill */}
-                <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent1 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
-                
-                <span className="relative z-10">Contact Me</span>
-             </a>
+            >
+              {/* ARC Background Fill */}
+              <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent1 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
+
+              <span className="relative z-10">Contact Me</span>
+            </motion.a>
           </div>
         </div>
 
@@ -99,7 +101,7 @@ const Navbar = () => {
       {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20, height: 0 }}
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -20, height: 0 }}
@@ -107,9 +109,9 @@ const Navbar = () => {
           >
             <div className="glass rounded-3xl p-6 flex flex-col space-y-4 shadow-2xl border border-white/10">
               {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
+                <a
+                  key={link.name}
+                  href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-4 text-xl font-bold text-foreground/80 hover:text-accent2 hover:bg-accent2/10 p-4 rounded-xl transition-all"
                 >
@@ -118,8 +120,8 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="border-t border-white/10 pt-4 mt-2">
-                <a 
-                  href="#contact" 
+                <a
+                  href="#contact"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-4 glass text-white rounded-xl font-bold border-white/10 shadow-[0_0_15px_rgba(204,255,0,0.3)] transition-all hover:scale-[1.02]"
                 >

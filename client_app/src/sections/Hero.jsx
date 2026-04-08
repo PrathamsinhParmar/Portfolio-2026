@@ -32,6 +32,8 @@ const MagneticButton = ({ children, className }) => {
   );
 };
 
+import FloatingCursor from '../components/FloatingCursor';
+
 const Hero = () => {
   const { scrollY } = useScroll();
   const yText1 = useTransform(scrollY, [0, 1000], [0, 150]);
@@ -56,7 +58,12 @@ const Hero = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col mb-12 md:mb-18 gap-2 md:gap-0">
+        <div className="flex flex-col mb-12 md:mb-18 gap-2 md:gap-0 relative">
+          
+          {/* Animated 3D Floating Cursors */}
+          <FloatingCursor color="#FF0055" label="Product" className="top-[-20px] md:top-[-60px] left-[30%] md:left-[45%]" delay={0} />
+          <FloatingCursor color="#8B5CF6" label="Prathamsinh" className="top-[60%] right-[10%] md:right-[20%] hidden sm:block" delay={1.2} />
+          <FloatingCursor color="#00f0ff" label="Dev" className="bottom-[-80px] md:bottom-[-60px] left-[10%] md:left-[5%]" delay={2.5} />
           
           <motion.div
             initial={{ opacity: 0, x: -100 }}
@@ -108,8 +115,14 @@ const Hero = () => {
             style={{ y: yPhoto }}
           >
             <MagneticButton>
-              <a 
+              <motion.a 
                 href="#contact" 
+                whileHover={{ 
+                  y: [0, -15, 8, 0], 
+                  x: [0, 10, -5, 0], 
+                  rotate: [-2, 2, -2, 2, 0],
+                  transition: { duration: 3, repeat: Infinity, ease: "easeInOut" } 
+                }}
                 className="w-48 h-48 md:w-64 md:h-64 rounded-full flex items-center justify-center overflow-hidden hover:scale-110 transition-all duration-500 group relative shadow-[0_0_50px_rgba(0,0,0,0.5)] border-4 border-white/10"
               >
                 {/* Gradient Glow Background */}
@@ -121,7 +134,7 @@ const Hero = () => {
                   alt="Contact" 
                   className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110 relative z-10" 
                 />
-              </a>
+              </motion.a>
             </MagneticButton>
           </motion.div>
 
