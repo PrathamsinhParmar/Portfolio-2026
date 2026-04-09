@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import ScrollRevealText from '../components/ScrollRevealText';
+
 const About = () => {
   return (
     <section id="about" className="py-20 md:py-32 px-6 border-t border-white/10 relative overflow-hidden">
@@ -21,12 +23,16 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           >
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 md:mb-8 leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent3 to-accent1 drop-shadow-[0_0_15px_rgba(255,0,85,0.2)]">
-              I AM A FULL-STACK DEVELOPER DRIVEN BY IMPACT AND ARTIFICIAL INTELLIGENCE.
-            </h3>
-            <p className="text-xl text-foreground/60 leading-relaxed mb-12">
-              Currently pursuing a B.Tech in Information Technology. I focus on building robust applications combining clean code structure with smooth, highly aesthetic frontends.
-            </p>
+            <ScrollRevealText 
+              text="I AM A FULL-STACK DEVELOPER DRIVEN BY IMPACT AND ARTIFICIAL INTELLIGENCE." 
+              className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 md:mb-8 tracking-tight drop-shadow-[0_0_15px_rgba(255,0,85,0.2)]" 
+              revealClassName="text-transparent bg-clip-text bg-gradient-to-r from-accent3 to-accent1"
+            />
+            <ScrollRevealText 
+              text="Currently pursuing a B.Tech in Information Technology. I focus on building robust applications combining clean code structure with smooth, highly aesthetic frontends." 
+              className="text-xl leading-relaxed mb-12"
+              revealClassName="text-foreground/80 md:text-foreground/90"
+            />
             <motion.a 
               href="/Prathamsinh_Parmar_Final_Resume.pdf" 
               target="_blank" 

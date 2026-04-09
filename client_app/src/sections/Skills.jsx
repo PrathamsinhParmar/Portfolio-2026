@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { 
   MapPin, 
   Briefcase, 
@@ -65,6 +65,28 @@ const ProjectDiscoverCard = () => {
     );
 };
 
+const Counter = ({ value }) => {
+    const ref = React.useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "0px" });
+    const motionValue = useMotionValue(0);
+    const springValue = useSpring(motionValue, { stiffness: 40, damping: 20 });
+    const [displayValue, setDisplayValue] = React.useState(0);
+
+    React.useEffect(() => {
+        if (isInView) {
+            motionValue.set(value);
+        }
+    }, [isInView, value, motionValue]);
+
+    React.useEffect(() => {
+        return springValue.on("change", (latest) => {
+            setDisplayValue(Math.floor(latest));
+        });
+    }, [springValue]);
+
+    return <span ref={ref}>{displayValue}</span>;
+}
+
 const Skills = () => {
   const techLogos = [
     { name: 'HTML5', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', color: '#E34F26' },
@@ -108,27 +130,22 @@ const Skills = () => {
   }, []);
 
   const [currentTrack, setCurrentTrack] = React.useState({
-    title: 'Miniskirt',
-    artist: 'AOA',
-    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop'
+    title: 'Starboy',
+    artist: 'The Weeknd',
+    image: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop'
   });
 
   React.useEffect(() => {
     const tracks = [
       { 
-        title: 'Miniskirt', 
-        artist: 'AOA', 
-        image: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop' 
-      },
-      { 
         title: 'Starboy', 
         artist: 'The Weeknd', 
-        image: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=2070&auto=format&fit=crop' 
+        image: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop' 
       },
       { 
         title: 'Blinding Lights', 
         artist: 'The Weeknd', 
-        image: 'https://images.unsplash.com/photo-1514525253361-bee8718a74a2?q=80&w=2014&auto=format&fit=crop' 
+        image: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=2070&auto=format&fit=crop' 
       },
       { 
         title: 'One Dance', 
@@ -257,7 +274,7 @@ const Skills = () => {
             
             <div className="relative z-10 flex items-end gap-2">
                 <div className="flex flex-col">
-                    <span className="text-6xl font-black tracking-tighter bg-gradient-to-r from-white to-accent2 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,240,255,0.4)] leading-none">50</span>
+                    <span className="text-6xl font-black tracking-tighter bg-gradient-to-r from-white to-accent2 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,240,255,0.4)] leading-none"><Counter value={50} /></span>
                     <span className="text-[12px] font-black text-accent2 uppercase tracking-[0.3em] mt-1 ml-1">Words Per Min</span>
                 </div>
                 <div className="flex flex-col gap-1.5 pb-1 self-end mb-1">
@@ -271,8 +288,8 @@ const Skills = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="absolute -bottom-4 -right-2 text-[100px] font-black text-accent2/[0.03] select-none leading-none group-hover:text-accent2/[0.08] transition-all duration-700 pointer-events-none">50</div>
+ 
+            <div className="absolute -bottom-4 -right-2 text-[100px] font-black text-accent2/[0.03] select-none leading-none group-hover:text-accent2/[0.08] transition-all duration-700 pointer-events-none"><Counter value={50} /></div>
           </motion.div>
 
           <motion.a 
@@ -287,9 +304,16 @@ const Skills = () => {
             className="md:col-span-1 md:row-span-1 relative overflow-hidden rounded-2xl bg-[#04000a] border border-accent4/20 p-5 flex items-center gap-3.5 group transition-all duration-500 shadow-[15px_15px_40px_rgba(0,0,0,0.5)] cursor-pointer block"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(112,0,255,0.2),transparent_70%)]"></div>
-            <div className="w-12 h-12 rounded-xl overflow-hidden bg-white/5 flex-shrink-0 relative shadow-[0_0_15px_rgba(112,0,255,0.4)] z-10">
+            
+            {/* Rotating Album Art */}
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              className="w-12 h-12 rounded-full overflow-hidden bg-white/5 flex-shrink-0 relative shadow-[0_0_15px_rgba(112,0,255,0.4)] z-10 border border-white/10"
+            >
                <img src={currentTrack.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Song art" />
-            </div>
+            </motion.div>
+
             <div className="flex-1 overflow-hidden relative z-10">
                 <div className="flex items-center gap-1 mb-0.5">
                     <span className="text-[12px] font-bold text-accent4 uppercase tracking-[0.2em] flex items-center gap-1.5">
@@ -300,9 +324,22 @@ const Skills = () => {
                 <h4 className="text-base font-black truncate leading-tight tracking-tight bg-gradient-to-r from-white to-accent4 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(112,0,255,0.4)]">{currentTrack.title}</h4>
                 <p className="text-[12px] font-bold text-white/40 uppercase tracking-widest truncate">{currentTrack.artist}</p>
             </div>
-            <div className="absolute top-4 right-4 text-accent4/60 group-hover:text-accent4 group-hover:rotate-12 transition-all duration-500">
+
+            {/* Pulsing Music Icon */}
+            <motion.div 
+              animate={{ 
+                y: [0, -3, 0],
+                rotate: [0, 10, -10, 0]
+              }}
+              transition={{ 
+                duration: 2, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute top-4 right-4 text-accent4/60 group-hover:text-accent4 transition-all duration-500"
+            >
                 <Music size={16} />
-            </div>
+            </motion.div>
           </motion.a>
 
           {/* Discover Projects Card - White/Glow Theme */}

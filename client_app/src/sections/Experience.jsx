@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import ScrollRevealText from '../components/ScrollRevealText';
 
 const Experience = () => {
   const experiences = [
@@ -62,9 +63,13 @@ const Experience = () => {
               </div>
               <ul className="space-y-3">
                 {exp.bullets.map((bullet, i) => (
-                  <li key={i} className="text-lg text-foreground/60 font-medium flex items-start group-hover:text-white/80 transition-colors">
+                  <li key={i} className="text-lg flex items-start">
                     <span className="text-accent1 mr-4 mt-1 drop-shadow-[0_0_5px_rgba(204,255,0,0.8)] font-black">▹</span>
-                    {bullet}
+                    <ScrollRevealText 
+                      text={bullet} 
+                      className="text-lg font-medium" 
+                      revealClassName="text-white/80"
+                    />
                   </li>
                 ))}
               </ul>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import ScrollRevealText from '../components/ScrollRevealText';
 import axios from 'axios';
 
 const API_BASE_URL = 'http://10.86.238.244:5000/api';
@@ -118,9 +119,11 @@ const Projects = () => {
                     {project.title}
                   </h3>
                   
-                  <p className="text-base md:text-lg text-foreground/50 leading-relaxed max-w-xl">
-                    {project.description}
-                  </p>
+                  <ScrollRevealText 
+                    text={project.description} 
+                    className="text-base md:text-lg leading-relaxed max-w-xl" 
+                    revealClassName="text-foreground/80"
+                  />
 
                   <div className="flex flex-wrap gap-2 pt-4">
                     {project.technologies?.map((tech, tIdx) => (

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import ScrollRevealText from '../components/ScrollRevealText';
 
 // Custom Magnetic Button Hook/Component logic inside Hero for proximity to the element
 const MagneticButton = ({ children, className }) => {
@@ -36,9 +37,18 @@ import FloatingCursor from '../components/FloatingCursor';
 
 const Hero = () => {
   const { scrollY } = useScroll();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const yText1 = useTransform(scrollY, [0, 1000], [0, 150]);
   const yText2 = useTransform(scrollY, [0, 1000], [0, -100]);
-  const yPhoto = useTransform(scrollY, [0, 1000], [0, 200]);
+  const yPhoto = useTransform(scrollY, [0, 1000], [0, isMobile ? 50 : 200]);
 
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center px-6 relative overflow-visible pt-24 pb-16 md:pt-32 md:pb-20">
@@ -100,11 +110,18 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="max-w-2xl mt-4 mb-4 md:mt-8"
+            className="max-w-2xl mt-6 md:mt-8 mb-4"
           >
-            <p className="text-xl sm:text-2xl md:text-3xl text-white/50 leading-[1.1] font-black tracking-tighter uppercase">
-              ENGINEERING HIGH-PERFORMANCE <span className="text-white">FULL-STACK</span> APPLICATIONS. FOCUSED ON SCALABLE ARCHITECTURES AND <span className="text-accent2">HIGH-IMPACT</span> DIGITAL EXPERIENCES.
-            </p>
+            <ScrollRevealText 
+              segments={[
+                { text: "ENGINEERING HIGH-PERFORMANCE", revealClassName: "text-white/80" },
+                { text: "FULL-STACK", revealClassName: "text-accent1" },
+                { text: "APPLICATIONS. FOCUSED ON SCALABLE ARCHITECTURES AND", revealClassName: "text-white/80" },
+                { text: "HIGH-IMPACT", revealClassName: "text-accent2" },
+                { text: "DIGITAL EXPERIENCES.", revealClassName: "text-white/80" }
+              ]}
+              className="text-xl sm:text-2xl md:text-3xl leading-[1.5] md:leading-[1.1] font-black tracking-tighter uppercase" 
+            />
           </motion.div>
 
           <motion.div

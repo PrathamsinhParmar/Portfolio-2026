@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import ScrollRevealText from '../components/ScrollRevealText';
 import axios from 'axios';
 
 const API_BASE_URL = 'http://10.86.238.244:5000/api';
@@ -51,9 +52,11 @@ const Contact = () => {
               <h3 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-12 tracking-tight leading-none text-white uppercase">
                 LET'S WORK <br /> TOGETHER.
               </h3>
-              <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed max-w-md">
-                I'm always open to discussing new engineering projects, creative ideas or opportunities to be part of your visions.
-              </p>
+              <ScrollRevealText 
+                text="I'm always open to discussing new engineering projects, creative ideas or opportunities to be part of your visions." 
+                className="text-lg md:text-xl font-medium leading-relaxed max-w-md" 
+                revealClassName="text-white/80"
+              />
             </div>
             
             <div className="mt-10 md:mt-16 space-y-6 md:space-y-8">
