@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import ScrollRevealText from '../components/ScrollRevealText';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://10.86.238.244:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const Projects = () => {
   const [projects, setProjects] = useState([
