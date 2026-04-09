@@ -6,7 +6,13 @@ import axios from 'axios';
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    email: '', 
+    subject: '', 
+    message: '',
+    _honeypot: '' // Anti-spam hidden field
+  });
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
 
   const handleChange = (e) => {
@@ -15,15 +21,22 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Bots usually fill out invisible fields
+    if (formData._honeypot) return;
+
     setStatus({ loading: true, success: false, error: null });
     
     try {
       await axios.post(`${API_BASE_URL}/contact`, formData);
       setStatus({ loading: false, success: true, error: null });
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 5000);
+      setFormData({ name: '', email: '', subject: '', message: '', _honeypot: '' });
+      
+      // Clear success message after 7 seconds
+      setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 7000);
     } catch (error) {
-      setStatus({ loading: false, success: false, error: error.response?.data?.error || 'Failed to send message.' });
+      const errorMsg = error.response?.data?.error || 'Oops! Something went wrong while sending your message.';
+      setStatus({ loading: false, success: false, error: errorMsg });
     }
   };
 
@@ -78,8 +91,17 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-8 md:space-y-16 mt-4 md:mt-8">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-8 md:space-y-12 mt-4 md:mt-8">
               
+              {/* HONEYPOT - Hidden from users */}
+              <input 
+                type="text" 
+                name="_honeypot" 
+                value={formData._honeypot} 
+                onChange={handleChange} 
+                style={{ display: 'none' }} 
+              />
+
               <div className="relative group">
                 <div className="flex items-baseline gap-3 md:gap-4 mb-2 md:mb-4">
                   <span className="text-xs md:text-sm font-bold text-accent1 font-mono">01</span>
@@ -92,8 +114,8 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-white/10 py-2 md:py-4 text-lg md:text-xl font-bold text-white focus:outline-none focus:border-accent1 transition-colors placeholder-transparent"
-                  placeholder="John Doe"
+                  className="w-full bg-transparent border-b-2 border-white/10 py-2 md:py-4 text-lg md:text-xl font-bold text-white focus:outline-none focus:border-accent1 transition-colors placeholder-white/5"
+                  placeholder="Full Name"
                 />
               </div>
 
@@ -109,14 +131,31 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-white/10 py-2 md:py-4 text-lg md:text-xl font-bold text-white focus:outline-none focus:border-accent2 transition-colors placeholder-transparent"
-                  placeholder="john@doe.com"
+                  className="w-full bg-transparent border-b-2 border-white/10 py-2 md:py-4 text-lg md:text-xl font-bold text-white focus:outline-none focus:border-accent2 transition-colors placeholder-white/5"
+                  placeholder="name@email.com"
                 />
               </div>
 
               <div className="relative group">
                 <div className="flex items-baseline gap-3 md:gap-4 mb-2 md:mb-4">
-                  <span className="text-xs md:text-sm font-bold text-accent3 font-mono">03</span>
+                  <span className="text-xs md:text-sm font-bold text-accent4 font-mono">03</span>
+                  <label htmlFor="subject" className="text-xl md:text-3xl font-bold text-white/50 group-focus-within:text-white transition-colors">Subject</label>
+                </div>
+                <input 
+                  type="text" 
+                  id="subject"
+                  name="subject"
+                  required
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full bg-transparent border-b-2 border-white/10 py-2 md:py-4 text-lg md:text-xl font-bold text-white focus:outline-none focus:border-accent4 transition-colors placeholder-white/5"
+                  placeholder="Reason for message"
+                />
+              </div>
+
+              <div className="relative group">
+                <div className="flex items-baseline gap-3 md:gap-4 mb-2 md:mb-4">
+                  <span className="text-xs md:text-sm font-bold text-accent3 font-mono">04</span>
                   <label htmlFor="message" className="text-xl md:text-3xl font-bold text-white/50 group-focus-within:text-white transition-colors">Your message</label>
                 </div>
                 <textarea 
@@ -126,12 +165,12 @@ const Contact = () => {
                   rows="1"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b-2 border-white/10 py-2 md:py-4 text-lg md:text-xl font-bold text-white focus:outline-none focus:border-accent3 transition-colors resize-none leading-relaxed placeholder-transparent"
-                  placeholder="Hello Prathamsinh, can you help me with..."
+                  className="w-full bg-transparent border-b-2 border-white/10 py-2 md:py-4 text-lg md:text-xl font-bold text-white focus:outline-none focus:border-accent3 transition-colors resize-none leading-relaxed placeholder-white/5"
+                  placeholder="Tell me more about your project..."
                 />
               </div>
 
-              <div className="pt-0 md:pt-8">
+              <div className="pt-0 md:pt-4">
                 <motion.button 
                   type="submit" 
                   whileHover={{ 
@@ -141,13 +180,12 @@ const Contact = () => {
                     transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" } 
                   }}
                   disabled={status.loading}
-                  className="relative overflow-hidden inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-accent1 rounded-full transition-all group mt-0 md:mt-4 mb-2 border-2 border-transparent hover:border-accent2"
+                  className="relative overflow-hidden inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-accent1 rounded-full transition-all group mt-0 md:mt-4 mb-2 border-2 border-transparent hover:border-accent2 disabled:opacity-50"
                 >
-                  {/* ARC Background Fill */}
                   <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent2 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
                   
                   <span className="relative z-10 flex items-center gap-2 md:gap-3 text-black text-sm md:text-lg font-black">
-                    {status.loading ? 'Sending...' : 'Send Message'}
+                    {status.loading ? 'Sending Verification...' : 'Send Message'}
                     {!status.loading && (
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
@@ -157,8 +195,25 @@ const Contact = () => {
                 </motion.button>
               </div>
 
-              {status.success && <p className="text-accent1 font-black mt-4 border border-accent1 p-4 rounded-xl inline-block w-fit shadow-[0_0_15px_rgba(204,255,0,0.2)]">Message sent successfully!</p>}
-              {status.error && <p className="text-red-500 font-black mt-4">{status.error}</p>}
+              {status.success && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-accent1 font-bold mt-4 border border-accent1/30 bg-accent1/5 p-4 rounded-xl flex items-center gap-3 shadow-[0_0_30px_rgba(204,255,0,0.1)]"
+                >
+                   <div className="w-8 h-8 rounded-full bg-accent1 flex items-center justify-center text-black">✓</div>
+                   <p>Thank you! Your message has been delivered to Prathamsinh Rajput.</p>
+                </motion.div>
+              )}
+              {status.error && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 font-bold mt-4 border border-red-500/30 bg-red-500/5 p-4 rounded-xl"
+                >
+                   {status.error}
+                </motion.div>
+              )}
             </form>
           </motion.div>
         </div>
