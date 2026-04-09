@@ -111,7 +111,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 1, ease: [0.76, 0, 0.24, 1] }}
-            className="pb-4"
+            className="pb-4 self-end"
             style={{ y: yPhoto }}
           >
             <MagneticButton>

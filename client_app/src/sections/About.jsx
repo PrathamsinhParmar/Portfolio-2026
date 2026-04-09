@@ -36,18 +36,21 @@ const About = () => {
                 rotate: [-0.6, 0.6, -0.6, 0.6, 0],
                 transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" } 
               }}
-              className="relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-accent1 text-black font-black text-lg rounded-full transition-all group mt-4 mb-2 border-2 border-transparent hover:border-accent2"
+              className="relative overflow-hidden inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-accent1 rounded-full transition-all group mt-4 mb-2 border-2 border-transparent hover:border-accent2"
             >
               {/* ARC Background Fill */}
               <div className="absolute top-[100%] left-[50%] -translate-x-[50%] w-[150%] aspect-square bg-accent2 rounded-full scale-0 group-hover:scale-100 group-hover:-top-[50%] transition-all duration-700 ease-[0.76, 0, 0.24, 1]" />
               
-              <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 text-black">
+              <span 
+                className="relative z-10 flex items-center gap-2 md:gap-3 transition-colors duration-300 text-black text-sm md:text-lg" 
+                style={{ fontFamily: '"Inter", sans-serif', fontWeight: 900 }}
+              >
                 Download Resume
                 <svg 
-                  width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" 
-                  className="group-hover:translate-x-1 transition-transform"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
+                  className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform"
                 >
-                  <path d="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSstikLXeSSCmIjmdJvuLSA4lsTJ6a8aBOY8A&s"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </span>
             </motion.a>
@@ -64,7 +67,7 @@ const About = () => {
               <div className="space-y-12">
                 
                 <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
-                  <span className="text-foreground/40 font-mono font-bold w-32 shrink-0 group-hover:text-accent2 transition-colors">Aug 2023 - 2027</span>
+                  <span className="text-foreground/40 font-mono font-bold w-auto md:w-48 whitespace-nowrap shrink-0 group-hover:text-accent2 transition-colors">Aug 2023 - May 2027</span>
                   <div>
                     <h5 className="text-2xl font-black mb-2 group-hover:text-accent1 transition-colors drop-shadow-[0_0_5px_rgba(204,255,0,0)] group-hover:drop-shadow-[0_0_10px_rgba(204,255,0,0.4)]">Drs. Kiran & Pallavi Patel Global University</h5>
                     <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">Bachelor of Technology - Information Technology</p>
@@ -72,7 +75,7 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
-                  <span className="text-foreground/40 font-mono font-bold w-32 shrink-0 group-hover:text-accent3 transition-colors">May 2021 - 2023</span>
+                  <span className="text-foreground/40 font-mono font-bold w-auto md:w-48 whitespace-nowrap shrink-0 group-hover:text-accent3 transition-colors">May 2021 - April 2023</span>
                   <div>
                     <h5 className="text-2xl font-black mb-2 group-hover:text-accent2 transition-colors drop-shadow-[0_0_5px_rgba(0,240,255,0)] group-hover:drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">Aditi Science School</h5>
                     <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">Higher Secondary Education (11th & 12th Science)</p>
@@ -80,7 +83,7 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
-                  <span className="text-foreground/40 font-mono font-bold w-32 shrink-0 group-hover:text-accent1 transition-colors">Jun 2008 - May 2021</span>
+                  <span className="text-foreground/40 font-mono font-bold w-auto md:w-48 whitespace-nowrap shrink-0 group-hover:text-accent1 transition-colors">Jun 2008 - May 2021</span>
                   <div>
                     <h5 className="text-2xl font-black mb-2 group-hover:text-accent3 transition-colors drop-shadow-[0_0_5px_rgba(255,0,85,0)] group-hover:drop-shadow-[0_0_10px_rgba(255,0,85,0.4)]">Shah N. B. Sarvjanik Highschool</h5>
                     <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">All Primary Education & Secondary School Education</p>
