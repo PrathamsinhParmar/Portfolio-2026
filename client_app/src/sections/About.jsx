@@ -34,7 +34,7 @@ const About = () => {
               revealClassName="text-foreground/80 md:text-foreground/90"
             />
             <motion.a 
-              href="/Prathamsinh_Parmar_Final_Resume.pdf" 
+              href="/Pratham Latest Resume.pdf" 
               target="_blank" 
               whileHover={{ 
                 y: [0, -10, 5, 0], 

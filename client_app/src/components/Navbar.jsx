@@ -236,7 +236,7 @@ const Navbar = () => {
               transition={{ delay: 0.8 }}
               className="p-8 z-20 flex gap-6 text-sm font-medium text-white/50 relative"
             >
-              <a href="/Prathamsinh_Parmar_Final_Resume.pdf" target="_blank" className="flex items-center gap-2 hover:text-accent1 transition-colors">
+              <a href="/Pratham Latest Resume.pdf" target="_blank" className="flex items-center gap-2 hover:text-accent1 transition-colors">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent1 shadow-[0_0_8px_rgba(204,255,0,0.8)] animate-pulse"></span>
                 Resume / CV
               </a>
