@@ -18,6 +18,17 @@ const MobileWarningModal = ({ loadingComplete = true }) => {
     }
   }, [loadingComplete]);
 
+  useEffect(() => {
+    if (isVisible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isVisible]);
+
   const handleDismiss = () => {
     setIsVisible(false);
   };
