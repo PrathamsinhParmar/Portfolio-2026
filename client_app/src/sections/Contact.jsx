@@ -235,7 +235,7 @@ const UniverseViz = () => {
         const { ctx, W, H, stars, planets, mouse } = s;
         // Parallax pivot
         const pcx = W/2 + (mouse.x / W - 0.5) * 16;
-        const pcy = H/2 + (mouse.y / H - 0.5) * 10;
+        const pcy = H/2 - 50 + (mouse.y / H - 0.5) * 10;
 
         ctx.clearRect(0,0,W,H);
 
@@ -379,7 +379,7 @@ const FloatingField = ({ id, label, type = 'text', value, onChange, accent, inde
         <div className="flex-1 relative">
           <label
             htmlFor={id}
-            className="block text-xs uppercase tracking-widest font-black mb-2 transition-colors duration-300"
+            className="block text-[10px] uppercase tracking-widest font-black mb-1.5 transition-colors duration-300"
             style={{ color: focused ? accent : 'rgba(255,255,255,0.35)' }}
           >
             {label}
@@ -442,7 +442,7 @@ const Contact = () => {
     { id:'name',    label:"What's your name?",  type:'text',  accent:'#ccff00', placeholder:'Full Name' },
     { id:'email',   label:"Your email address",  type:'email', accent:'#00f0ff', placeholder:'name@email.com' },
     { id:'subject', label:"What's this about?",  type:'text',  accent:'#7000ff', placeholder:'Subject' },
-    { id:'message', label:"Tell me more…",       type:'text',  accent:'#ff0055', placeholder:'Your message here...', as:'textarea', rows:4 },
+    { id:'message', label:"Tell me more…",       type:'text',  accent:'#ff0055', placeholder:'Your message here...', as:'textarea', rows:3 },
   ];
 
   return (
@@ -480,17 +480,16 @@ const Contact = () => {
             transition={{ duration:0.8, ease:[0.76,0,0.24,1] }}
             className="flex-1 xl:max-w-[55%] xl:pr-12"
           >
-            <div className="mb-10">
-              <h3 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none text-white uppercase mb-4">
-                LET'S WORK<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent1 via-accent2 to-accent4">TOGETHER.</span>
+            <div className="mb-6">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none text-white uppercase mb-3 whitespace-nowrap">
+                LET'S WORK <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent1 via-accent2 to-accent4">TOGETHER.</span>
               </h3>
-              <p className="text-white/50 text-sm md:text-base font-medium leading-relaxed max-w-sm">
+              <p className="text-white/50 text-xs md:text-sm font-medium leading-relaxed max-w-xs">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 mb-10">
+            <div className="flex flex-wrap gap-3 mb-8">
               <a href="mailto:prthamsinhparmar0@gmail.com"
                 className="group flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 hover:border-accent1/50 hover:bg-accent1/5 transition-all duration-300">
                 <svg className="w-4 h-4 text-accent1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -502,7 +501,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <input type="text" name="_honeypot" value={formData._honeypot} onChange={handleChange} style={{ display:'none' }} />
               {fields.map((f,i) => (
                 <FloatingField key={f.id} id={f.id} label={f.label} type={f.type}
@@ -552,7 +551,7 @@ const Contact = () => {
           {/* RIGHT: Universe — height matches form via items-stretch on parent */}
           <motion.div
             initial={{ opacity:0, x:40 }}
-            animate={inView ? { opacity:1, x:0 } : {}}
+            animate={inView ? { opacity:1, y: -100, x:0 } : {}}
             transition={{ duration:0.9, ease:[0.76,0,0.24,1], delay:0.2 }}
             className="hidden xl:block xl:flex-1 relative self-stretch"
             aria-hidden="true"
