@@ -53,7 +53,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className={`fixed top-0 w-full z-40 transition-all duration-500 py-6 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}>
+      <header className={`fixed top-0 w-full z-[999] transition-all duration-500 py-6 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="container mx-auto px-6 max-w-[1400px]">
           {/* ═══════════════════════════════════════════════════════════════ */}
           {/* DESKTOP VIEW                                                  */}
@@ -143,7 +143,7 @@ const Navbar = () => {
             animate={{ opacity: 1, clipPath: 'circle(150% at 100% 0)' }}
             exit={{ opacity: 0, clipPath: 'circle(0% at 100% 0)', transition: { duration: 0.6 } }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-50 bg-[#070707] flex flex-col overflow-hidden"
+            className="fixed inset-0 z-[1000] bg-[#070707] flex flex-col overflow-hidden"
           >
             {/* 3D Multi-color Gradient Sphere (Depth Effect) - Parallaxing */}
             <motion.div 
