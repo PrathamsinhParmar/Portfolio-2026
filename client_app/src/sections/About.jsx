@@ -68,33 +68,86 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
+              className="perspective-[1200px]"
             >
-              <h4 className="text-sm font-black tracking-widest text-accent3 drop-shadow-[0_0_5px_rgba(255,0,85,0.4)] uppercase mb-8">Education</h4>
-              <div className="space-y-12">
+              <h4 className="text-sm font-black tracking-widest text-accent3 drop-shadow-[0_0_5px_rgba(255,0,85,0.4)] uppercase mb-10">Education</h4>
+              
+              <div className="relative flex flex-col gap-4 pl-4 border-l-2 border-white/5">
                 
-                <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
-                  <span className="text-foreground/40 font-mono font-bold w-auto md:w-48 whitespace-nowrap shrink-0 group-hover:text-accent2 transition-colors">Aug 2023 - May 2027</span>
-                  <div>
-                    <h5 className="text-2xl font-black mb-2 group-hover:text-accent1 transition-colors drop-shadow-[0_0_5px_rgba(204,255,0,0)] group-hover:drop-shadow-[0_0_10px_rgba(204,255,0,0.4)]">Drs. Kiran & Pallavi Patel Global University</h5>
-                    <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">Bachelor of Technology - Information Technology</p>
+                {/* 1. Drs. Kiran & Pallavi Patel (Accent 4 - Purple) */}
+                <motion.div
+                  initial={{ rotateX: 20, y: 40, opacity: 0, z: -50 }}
+                  whileInView={{ rotateX: 0, y: 0, opacity: 1, z: 0 }}
+                  whileHover={{ scale: 1.02, rotateX: 8, rotateY: -8, z: 40 }}
+                  transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+                  className="group relative p-5 md:p-6 rounded-2xl bg-white/[0.015] border border-white/10 hover:border-accent4/40 hover:bg-accent4/5 transition-colors overflow-hidden backdrop-blur-md cursor-default"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <div className="absolute top-[50%] -left-4 w-6 h-[2px] bg-accent4 shadow-[0_0_10px_rgba(112,0,255,0.8)] -translate-y-[50%] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent4/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
+                  <div className="relative z-10" style={{ transform: 'translateZ(30px)' }}>
+                    <span className="text-foreground/40 font-mono font-bold text-xs tracking-widest uppercase mb-1.5 block group-hover:text-accent4 transition-colors">
+                      Aug 2023 - May 2027
+                    </span>
+                    <h5 className="text-xl sm:text-2xl font-black mb-1.5 text-white group-hover:text-accent4 transition-colors drop-shadow-[0_0_5px_rgba(112,0,255,0)] group-hover:drop-shadow-[0_0_10px_rgba(112,0,255,0.4)] leading-tight">
+                      Drs. Kiran & Pallavi Patel Global University
+                    </h5>
+                    <p className="text-foreground/60 font-bold text-sm group-hover:text-white transition-colors">
+                      Bachelor of Technology - Information Technology
+                    </p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
-                  <span className="text-foreground/40 font-mono font-bold w-auto md:w-48 whitespace-nowrap shrink-0 group-hover:text-accent3 transition-colors">May 2021 - April 2023</span>
-                  <div>
-                    <h5 className="text-2xl font-black mb-2 group-hover:text-accent2 transition-colors drop-shadow-[0_0_5px_rgba(0,240,255,0)] group-hover:drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">Aditi Science School</h5>
-                    <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">Higher Secondary Education (11th & 12th Science)</p>
-                  </div>
-                </div>
+                {/* 2. Aditi Science School (Accent 3 - Pink) */}
+                <motion.div
+                  initial={{ rotateX: 20, y: 40, opacity: 0, z: -50 }}
+                  whileInView={{ rotateX: 0, y: 0, opacity: 1, z: 0 }}
+                  whileHover={{ scale: 1.02, rotateX: -8, rotateY: 8, z: 40 }}
+                  transition={{ duration: 0.6, type: "spring", bounce: 0.4, delay: 0.1 }}
+                  className="group relative p-5 md:p-6 rounded-2xl bg-white/[0.015] border border-white/10 hover:border-accent3/40 hover:bg-accent3/5 transition-colors overflow-hidden backdrop-blur-md cursor-default"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <div className="absolute top-[50%] -left-4 w-6 h-[2px] bg-accent3 shadow-[0_0_10px_rgba(255,0,85,0.8)] -translate-y-[50%] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent3/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-12 group cursor-default">
-                  <span className="text-foreground/40 font-mono font-bold w-auto md:w-48 whitespace-nowrap shrink-0 group-hover:text-accent1 transition-colors">Jun 2008 - May 2021</span>
-                  <div>
-                    <h5 className="text-2xl font-black mb-2 group-hover:text-accent3 transition-colors drop-shadow-[0_0_5px_rgba(255,0,85,0)] group-hover:drop-shadow-[0_0_10px_rgba(255,0,85,0.4)]">Shah N. B. Sarvjanik Highschool</h5>
-                    <p className="text-foreground/60 font-bold group-hover:text-white transition-colors">All Primary Education & Secondary School Education</p>
+                  <div className="relative z-10" style={{ transform: 'translateZ(30px)' }}>
+                    <span className="text-foreground/40 font-mono font-bold text-xs tracking-widest uppercase mb-1.5 block group-hover:text-accent3 transition-colors">
+                      May 2021 - April 2023
+                    </span>
+                    <h5 className="text-xl sm:text-2xl font-black mb-1.5 text-white group-hover:text-accent3 transition-colors drop-shadow-[0_0_5px_rgba(255,0,85,0)] group-hover:drop-shadow-[0_0_10px_rgba(255,0,85,0.4)] leading-tight">
+                      Aditi Science School
+                    </h5>
+                    <p className="text-foreground/60 font-bold text-sm group-hover:text-white transition-colors">
+                      Higher Secondary Education (11th & 12th Science)
+                    </p>
                   </div>
-                </div>
+                </motion.div>
+
+                {/* 3. Shah N. B. Sarvjanik Highschool (Accent 2 - Cyan) */}
+                <motion.div
+                  initial={{ rotateX: 20, y: 40, opacity: 0, z: -50 }}
+                  whileInView={{ rotateX: 0, y: 0, opacity: 1, z: 0 }}
+                  whileHover={{ scale: 1.02, rotateX: 8, rotateY: -8, z: 40 }}
+                  transition={{ duration: 0.6, type: "spring", bounce: 0.4, delay: 0.2 }}
+                  className="group relative p-5 md:p-6 rounded-2xl bg-white/[0.015] border border-white/10 hover:border-accent2/40 hover:bg-accent2/5 transition-colors overflow-hidden backdrop-blur-md cursor-default"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <div className="absolute top-[50%] -left-4 w-6 h-[2px] bg-accent2 shadow-[0_0_10px_rgba(0,240,255,0.8)] -translate-y-[50%] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent2/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="relative z-10" style={{ transform: 'translateZ(30px)' }}>
+                    <span className="text-foreground/40 font-mono font-bold text-xs tracking-widest uppercase mb-1.5 block group-hover:text-accent2 transition-colors">
+                      Jun 2008 - May 2021
+                    </span>
+                    <h5 className="text-xl sm:text-2xl font-black mb-1.5 text-white group-hover:text-accent2 transition-colors drop-shadow-[0_0_5px_rgba(0,240,255,0)] group-hover:drop-shadow-[0_0_10px_rgba(0,240,255,0.4)] leading-tight">
+                      Shah N. B. Sarvjanik Highschool
+                    </h5>
+                    <p className="text-foreground/60 font-bold text-sm group-hover:text-white transition-colors">
+                      All Primary Education & Secondary School Education
+                    </p>
+                  </div>
+                </motion.div>
 
               </div>
             </motion.div>
