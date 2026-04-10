@@ -8,6 +8,7 @@ import BackgroundMusic from './components/BackgroundMusic';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollProgress from './components/ScrollProgress';
 import { ReactLenis } from '@studio-freight/react-lenis';
+import MobileWarningModal from './components/MobileWarningModal';
 
 function App() {
   return (

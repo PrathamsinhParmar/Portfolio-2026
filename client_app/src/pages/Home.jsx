@@ -8,6 +8,7 @@ import Skills from '../sections/Skills';
 import Projects from '../sections/Projects';
 import Contact from '../sections/Contact';
 import Footer from '../components/Footer';
+import MobileWarningModal from '../components/MobileWarningModal';
 
 const Home = () => {
   const [loadingComplete, setLoadingComplete] = useState(false);
@@ -20,6 +21,7 @@ const Home = () => {
       <div className="fixed top-[40%] left-[50%] translate-x-[-50%] w-[900px] h-[500px] bg-accent3/10 rounded-full blur-[200px] pointer-events-none z-0" />
 
       {!loadingComplete && <Loader onLoadingComplete={() => setLoadingComplete(true)} />}
+      <MobileWarningModal loadingComplete={loadingComplete} />
       
       {/* Content wrapper */}
       <div className={`${loadingComplete ? 'opacity-100' : 'opacity-0 h-screen overflow-hidden'} transition-opacity duration-1000 relative z-10`}>
