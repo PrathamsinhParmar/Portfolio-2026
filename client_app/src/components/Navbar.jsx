@@ -145,18 +145,19 @@ const Navbar = () => {
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
             className="fixed inset-0 z-50 bg-[#070707] flex flex-col overflow-hidden"
           >
-            {/* 3D Dark Background Sphere (Depth Effect) - Parallaxing */}
+            {/* 3D Multi-color Gradient Sphere (Depth Effect) - Parallaxing */}
             <motion.div 
-              className="absolute bottom-[-10%] right-[-30%] w-[120vw] max-w-[500px] aspect-square rounded-full z-0 pointer-events-none"
+              className="absolute bottom-[-10%] right-[-30%] w-[120vw] max-w-[500px] aspect-square rounded-full z-0 pointer-events-none opacity-60"
               style={{ 
-                background: 'radial-gradient(circle at 35% 35%, #2a2a35 0%, #111116 40%, #030303 80%)',
-                boxShadow: 'inset -30px -30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(255,255,255,0.02)'
+                background: 'radial-gradient(circle at 30% 30%, rgba(112,0,255,0.3) 0%, rgba(255,0,85,0.2) 30%, rgba(0,240,255,0.15) 60%, rgba(204,255,0,0.1) 85%, transparent 100%)',
+                boxShadow: 'inset -50px -50px 120px rgba(0,0,0,0.95), 0 0 120px rgba(112,0,255,0.2)'
               }}
               animate={{ 
-                rotate: [0, 5, 0, -5, 0],
-                y: [0, -15, 0, 15, 0]
+                rotate: [0, 15, 0, -15, 0],
+                y: [0, -30, 0, 30, 0],
+                scale: [1, 1.1, 1, 0.9, 1]
               }}
-              transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
             />
 
             {/* Header Area inside Overlay */}
@@ -193,9 +194,9 @@ const Navbar = () => {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 className="mb-8 space-y-1 text-white/50 font-sans tracking-wide text-sm border-l-2 border-accent4/50 pl-4"
               >
-                <p className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent4 to-accent2 tracking-widest uppercase text-xs mb-3">Gujarat, India</p>
-                <p className="hover:text-white transition-colors cursor-pointer">prathamsinh.dev@gmail.com</p>
-                <p className="hover:text-white transition-colors cursor-pointer">+91 91069 15561</p>
+                <p className="font-bold text-accent2 drop-shadow-[0_0_10px_rgba(0,240,255,0.7)] tracking-widest uppercase text-xs mb-3">Gujarat, India</p>
+                <p className="hover:text-white transition-colors cursor-pointer">prathamsinhparmar0@gmail.com</p>
+                <p className="hover:text-white transition-colors cursor-pointer">+91 8238075291</p>
               </motion.div>
 
               {/* Main Links - Perspective 3D Staggered Container */}
