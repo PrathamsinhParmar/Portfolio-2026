@@ -321,7 +321,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className="py-24 md:py-40 bg-[var(--background)] border-t border-white/10 relative overflow-hidden">
+    <section id="projects" className="pt-24 md:pt-32 pb-24 md:pb-40 bg-[var(--background)] border-t border-white/10 relative overflow-hidden">
       <div className="w-full">
 
         {/* Header Block matching Reference with spacing */}

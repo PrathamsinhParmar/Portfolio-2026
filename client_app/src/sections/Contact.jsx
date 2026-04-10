@@ -551,7 +551,7 @@ const Contact = () => {
           {/* RIGHT: Universe — height matches form via items-stretch on parent */}
           <motion.div
             initial={{ opacity:0, x:40 }}
-            animate={inView ? { opacity:1, y: -100, x:0 } : {}}
+            animate={inView ? { opacity:1, y: 30, x:0 } : {}}
             transition={{ duration:0.9, ease:[0.76,0,0.24,1], delay:0.2 }}
             className="hidden xl:block xl:flex-1 relative self-stretch"
             aria-hidden="true"

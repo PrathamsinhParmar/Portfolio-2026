@@ -29,7 +29,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-32 px-6 border-t border-white/10 relative overflow-hidden">
+    <section id="experience" className="pt-32 pb-24 px-6 border-t border-white/10 relative overflow-hidden">
       <div className="container mx-auto max-w-[1400px]">
         
         <div className="flex items-center gap-6 mb-10 md:mb-16">
@@ -39,7 +39,7 @@ const Experience = () => {
           </h2>
         </div>
 
-        <div className="space-y-16 max-w-5xl">
+        <div className="space-y-16 w-full">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -49,30 +49,40 @@ const Experience = () => {
               transition={{ duration: 0.8, delay: index * 0.1, ease: [0.76, 0, 0.24, 1] }}
               className="group border-b border-white/10 pb-12 cursor-default"
             >
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-6">
-                <div className="lg:w-[55%]">
-                  <h3 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.1] group-hover:text-accent2 transition-colors group-hover:drop-shadow-[0_0_10px_rgba(0,240,255,0.5)]">
+              {/* Restructured 2-Column Grid Layout — Content Left, Meta Right */}
+              <div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-6 md:gap-12 relative flex-col-reverse lg:flex-row">
+                
+                {/* Content Column: Role & Bullets (Now on the Left) */}
+                <div className="order-2 lg:order-1">
+                  <h3 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.1] text-white group-hover:text-accent2 transition-colors duration-300 group-hover:drop-shadow-[0_0_10px_rgba(0,240,255,0.5)] mb-8">
                     {exp.role}
                   </h3>
+                  <ul className="space-y-4">
+                    {exp.bullets.map((bullet, i) => (
+                      <li key={i} className="flex items-start text-lg">
+                        <span className="text-accent1 mr-4 mt-1 drop-shadow-[0_0_5px_rgba(204,255,0,0.8)] font-black shrink-0">▹</span>
+                        <ScrollRevealText 
+                          text={bullet} 
+                          className="text-lg font-medium leading-relaxed" 
+                          revealClassName="text-white/80"
+                        />
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="lg:w-[45%] flex items-center justify-start lg:justify-end gap-4 md:gap-6 text-foreground/60 font-mono font-bold text-sm md:text-[15px] group-hover:text-white transition-colors">
-                  <div className="w-[180px] leading-relaxed">{exp.company}</div>
-                  <span className="text-accent1 text-xl drop-shadow-[0_0_5px_rgba(204,255,0,0.8)] shrink-0 mt-1">•</span>
-                  <div className="w-[150px] leading-relaxed">{exp.period}</div>
+
+                {/* Meta Column: Period & Company (Now on the Right) */}
+                <div className="flex flex-col gap-2 lg:pt-3 lg:items-end lg:text-right order-1 lg:order-2 mb-6 lg:mb-0">
+                  <div className="flex items-center lg:justify-end gap-3 text-accent1 font-bold font-mono text-sm md:text-base drop-shadow-[0_0_5px_rgba(204,255,0,0.5)]">
+                    <span className="w-2 h-2 rounded-full bg-accent1 shadow-[0_0_8px_rgba(204,255,0,0.8)] animate-pulse shrink-0 lg:order-2" />
+                    <span className="lg:order-1">{exp.period}</span>
+                  </div>
+                  <div className="text-white/60 font-black font-mono text-xs uppercase tracking-widest mt-1 border-l lg:border-l-0 lg:border-r border-white/10 pl-5 lg:pl-0 lg:pr-5 ml-1 lg:mr-1 py-1">
+                    {exp.company}
+                  </div>
                 </div>
+
               </div>
-              <ul className="space-y-3">
-                {exp.bullets.map((bullet, i) => (
-                  <li key={i} className="text-lg flex items-start">
-                    <span className="text-accent1 mr-4 mt-1 drop-shadow-[0_0_5px_rgba(204,255,0,0.8)] font-black">▹</span>
-                    <ScrollRevealText 
-                      text={bullet} 
-                      className="text-lg font-medium" 
-                      revealClassName="text-white/80"
-                    />
-                  </li>
-                ))}
-              </ul>
             </motion.div>
           ))}
         </div>
