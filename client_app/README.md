@@ -1,16 +1,43 @@
-# React + Vite
+# 🎨 Portfolio 2026 - Frontend (Client App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the React-based frontend for the Prathamsinh Rajput Portfolio, built with Vite for speed and efficiency.
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Prerequisites
+- Node.js (v18+)
+- npm or yarn
 
-## React Compiler
+### Installation
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Development
+Start the development server:
+```bash
+npm run dev
+```
 
-## Expanding the ESLint configuration
+### Build
+Build for production:
+```bash
+npm run build
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Key Technologies
+- **React 19**: Modern UI library with high performance.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **Framer Motion**: Powering all the high-end staggering and entrance animations.
+- **Lenis**: Providing premium smooth inertial scrolling.
+- **Lucide React**: Clean and minimal icon set.
+
+---
+
+## 📂 Highlights
+- **Staggered Hero Animation**: Unique entry sequence with overlapping typography.
+- **Dynamic Project Gallery**: Renders projects fetched from the Node.js API.
+- **Bento Grid Layout**: Responsive and interactive historical timeline/skills section.
+- **Magnetic Buttons**: Interactive UI elements that react to cursor proximity.
