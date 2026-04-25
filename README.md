@@ -116,7 +116,7 @@ The portfolio follows a **Premium Brutalist** design:
 
 **Prathamsinh Rajput**
 - GitHub: [@PrathamsinhParmar](https://github.com/PrathamsinhParmar)
-- Portfolio: (https://prathamsinh-rajput.vercel.app/)
+- Portfolio: [Prathamsinh Rajput](https://prathamrajput.vercel.app/)
 
 ---
 *Built with ❤️ by Prathamsinh Rajput*
