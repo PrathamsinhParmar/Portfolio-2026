@@ -41,8 +41,8 @@ const CustomCursor = () => {
       // Calculate speed for glow intensification
       const speed = Math.sqrt(dx * dx + dy * dy);
       
-      cursorX += dx * 0.2;
-      cursorY += dy * 0.2;
+      cursorX += dx * 0.5;
+      cursorY += dy * 0.5;
 
       // Update inner dot
       if (dotRef.current) {

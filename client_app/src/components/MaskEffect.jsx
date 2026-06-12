@@ -18,9 +18,9 @@ const TEXT_SELECTORS =
   'h1,h2,h3,h4,h5,h6,p,a,button,li,label,span,blockquote,strong,em,dt,dd';
 
 const RADIUS_REST = 0;    // hidden when not on text
-const RADIUS_TEXT = 100;  // px — mask size on text hover (reduced)
-const LERP_POS    = 0.13;
-const LERP_RAD    = 0.10;
+const RADIUS_TEXT = 60;   // px — mask size on text hover (reduced)
+const LERP_POS    = 0.35;
+const LERP_RAD    = 0.20;
 
 const lerp = (a, b, t) => a + (b - a) * t;
 

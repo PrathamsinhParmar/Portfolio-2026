@@ -41,7 +41,7 @@ const SmoothScroll = () => {
         const distance = targetY - startY;
         
         // Target scroll duration inside the engine
-        const duration = 1000;
+        const duration = 600;
         let start = null;
 
         const animation = (currentTime) => {

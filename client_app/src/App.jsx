@@ -12,7 +12,7 @@ import MobileWarningModal from './components/MobileWarningModal';
 
 function App() {
   return (
-    <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothTouch: false }}>
+    <ReactLenis root options={{ lerp: 0.1, duration: 1.1, smoothTouch: false }}>
       <Router>
         <BackgroundMusic />
         <ScrollProgress />
